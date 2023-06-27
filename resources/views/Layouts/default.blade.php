@@ -25,7 +25,7 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
    <div class="wrapper">
-      <nav class="main-header navbar navbar-expand navbar-light" style="background-color:green;">
+      <nav class="main-header navbar navbar-expand navbar-light" style="background-color:#ffe74c;">
          <!-- Left navbar links -->
          <ul class="navbar-nav">
                <li class="nav-item">
@@ -83,13 +83,13 @@
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a href="document-logs.html" class="nav-link">
+                     <a href="{{ route('transaction.pending') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
                         <p style="color: white;">Pending </p>
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a href="user-logs.html" class="nav-link">
+                     <a href="{{ route('transaction.approved') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
                         <p style="color: white;">Approved</p>
                      </a>

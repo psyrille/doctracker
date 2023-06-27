@@ -44,6 +44,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/logout', 'LogoutController@logout')->name('logout.perform');
             Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard');
             Route::get('/transaction/new', 'TransactionController@newtransaction')->name('transaction.new');
+            Route::get('/transaction/pending', 'PendingController@pendingtransaction')->name('transaction.pending');
+            Route::get('/transaction/approved', 'ApprovedController@approvedtransaction')->name('transaction.approved');
+           
            
     });
       

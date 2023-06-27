@@ -14,6 +14,55 @@
                </ol>
             </div>
          </div>
+         <section class="content">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-12 col-sm-8 col-md-8 offset-sm-2 offset-md-2 offset-lg-2">
+                     <div class="info-box">
+                        <span class="info-box-icon text-success"><img src="../asset/img/files-icon.jpg" width="50"></span>
+
+                        <div class="info-box-content">
+                           <span class="info-box-text">
+                              <h5>Number of New Files</h5>
+                           </span>
+                           <span class="info-box-number">
+                              <h2>45</h2>
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-sm-8 col-md-8 offset-sm-2 offset-md-2 offset-lg-2">
+                     <div class="info-box">
+                        <span class="info-box-icon text-info"><img src="../asset/img/files-icon.jpg" width="50"></span>
+
+                        <div class="info-box-content">
+                           <span class="info-box-text">
+                              <h5>Number of Pending Files</h5>
+                           </span>
+                           <span class="info-box-number">
+                              <h2>8</h2>
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-sm-8 col-md-8 offset-sm-2 offset-md-2 offset-lg-2">
+                     <div class="info-box">
+                        <span class="info-box-icon text-info"><img src="../asset/img/files-icon.jpg" width="50"></span>
+
+                        <div class="info-box-content">
+                           <span class="info-box-text">
+                              <h5>Number of Approved Files</h5>
+                           </span>
+                           <span class="info-box-number">
+                              <h2>8</h2>
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </section>
       </div>
 </div>
       
