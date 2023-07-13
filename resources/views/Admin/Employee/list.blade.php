@@ -5,7 +5,7 @@
       <div class="container-fluid">
          <div class="row mb-2">
       <div class="col-sm-6">
-         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;"> Pending Transaction</h1>
+        <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;">List Of Employee</h1>
          </div>
             <div class="col-sm-6">
               <!--  <ol class="breadcrumb float-sm-right">
@@ -15,7 +15,6 @@
             </div>
          </div>
       </div>
-   @include('layouts.partials.messages')
       <div class="row card p-5">
             <div class="col-md-12">
                <div class="card-header">
@@ -46,33 +45,30 @@
                         <thead>
                            <tr>
                               <th>Full Name</th>
-                              <th>Contact Number</th>
-                              <th>Email Address</th>
-                              <th>Address</th>
-                              <th>Name of Document</th>
-                              <th>Short Description</th>
-                              <th>Purpose</th>
+                              <th>Password</th>
+                              <th>Device id</th>
+                              <th>Position</th>
+                              <th>Department</th>
                               <th class="text-center">Action</th>
                            </tr>
 
                         </thead>
                         <tbody>
-                          @foreach($transactions as $transaction)
+                          @foreach($employees as $employee)
                            <tr>
-                              <td>{{$transaction->fullname}}</td>
-                              <td>{{$transaction->contact_number}}</td>
-                              <td>{{$transaction->email_address}}</td>
-                              <td>{{$transaction->address}}</td>
-                              <td>{{$transaction->name_of_document}}</td>
-                              <td>{{$transaction->short_description}}</td>
-                              <td>{{$transaction->purpose}}</td>
+                              <td>{{$employee->fullname}}</td>
+                              <td>{{$employee->password}}</td>
+                              <td>{{$employee->device_id}}</td>
+                              <td>{{$employee->position}}</td>
+                              <td>{{$employee->department}}</td>
                               <td class="text-center">
-                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/edit/').'/'.$transaction->id }}"><i
+                                 <a class="btn btn-sm btn-success" href="{{ url('/list/edit/').'/'.$employee->id }}"><i
                                        class="fa fa-edit"></i> Update</a>
-
-                                  <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
+                                <a class="btn btn-sm btn-danger" href="{{ url('/list/delete/').'/'.$employee->id }}"><i
                                        class="fa fa-delete"></i> Delete</a>
-                                     
+                                       {{method_field('DELETE')}}
+                                        @csrf
+
                               </td>
                            </tr>
                            @endforeach
@@ -83,6 +79,7 @@
                   </div>
                </div>
             </div>
+
             
          </section>
                </center>

@@ -5,13 +5,13 @@
       <div class="container-fluid">
          <div class="row mb-2">
             <div class="col-sm-6">
-               <h1 class="m-0"><img src="../asset/img/dashboard-icon.jpg" width="40" style="border-radius: 100px;"> Dashboard</h1>
+               <h1 class="m-0"><img src="{{ asset('/asset/img/dashboard-icon.jpg') }}" width="40" style="border-radius: 100px;" style="color: white;"> Dashboard</h1>
             </div>
             <div class="col-sm-6">
-               <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard</li>
-               </ol>
+              <!--  <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#" >Home</a></li>
+                  <li class="breadcrumb-item active" >Dashboard</li>
+               </ol> -->
             </div>
          </div>
          <section class="content">
@@ -23,10 +23,12 @@
 
                         <div class="info-box-content">
                            <span class="info-box-text">
-                              <h5>Number of New Files</h5>
+                              <h5>Number of Users</h5>
                            </span>
-                           <span class="info-box-number">
-                              <h2>45</h2>
+                           <span class="info-box-number" >
+                              @if($nOusers=App\Models\User::count())
+                                 <h2>{{$nOusers}}</h2>
+                              @endif
                            </span>
                         </div>
                      </div>
@@ -37,10 +39,14 @@
 
                         <div class="info-box-content">
                            <span class="info-box-text">
-                              <h5>Number of Pending Files</h5>
+                              <h5>Number of Pending Transaction</h5>
                            </span>
                            <span class="info-box-number">
-                              <h2>8</h2>
+                              @if($nOtransaction=App\Models\Transaction::count())
+                                 <h2>{{$nOtransaction}}</h2>
+                              @else 
+                                 <h2>0</h2>
+                              @endif
                            </span>
                         </div>
                      </div>
