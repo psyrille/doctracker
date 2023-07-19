@@ -15,6 +15,7 @@
             </div>
          </div>
       </div>
+       @include('layouts.partials.messages')
       <div class="row card p-5">
             <div class="col-md-12">
                <div class="card-header">
@@ -61,6 +62,7 @@
                               <td>{{$employee->device_id}}</td>
                               <td>{{$employee->position}}</td>
                               <td>{{$employee->department}}</td>
+
                               <td class="text-center">
                                  <a class="btn btn-sm btn-success" href="{{ url('/list/edit/').'/'.$employee->id }}"><i
                                        class="fa fa-edit"></i> Update</a>

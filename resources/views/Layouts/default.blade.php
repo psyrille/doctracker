@@ -10,7 +10,9 @@
    <link rel="stylesheet" href="{{ asset('/asset/css/adminlte.min.css') }}">
    <link rel="stylesheet" href="{{ asset('/asset/css/style.css') }}">
    <link rel="stylesheet" href="{{ asset('/asset/tables/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('/asset/tables/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
    <style type="text/css">
+
       td a.btn{
          font-size: 0.7rem;
       }
@@ -134,10 +136,10 @@
                      </a>
                   </li>
                   <li class="nav-item">
-                 <!--     <a href="{{ route('log.document') }}" class="nav-link">
+                     <a href="{{ route('log.view') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
-                        <p style="color: white;"> User Logs </p>
-                     </a> -->
+                        <p style="color: white;"> View Logs </p>
+                     </a>
                   </li>
                </ul>
                   </li>

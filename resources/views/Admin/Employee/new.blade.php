@@ -51,8 +51,18 @@
                               <div class="form-group">
                                 <label> Department </label>
                                 <select class="form-control" name="department" placeholder="Enter department">
-                                  <option>Human Resource Department</option>
-                                  <option>Treasurers Office</option>
+                                  <option></option>
+                                  <option>SB Office</option>
+                                  <option>Budget</option>
+                                  <option>Accounting</option>
+                                  <option>Treasurer</option>
+                                  <option>MPDC</option>
+                                  <option>Engineering</option>
+                                  <option>MAGSO</option>
+                                  <option>MSWDO</option>
+                                  <option>Assessor Office</option>
+                                  <option>Civil Registrar Office</option>
+                                  <option>GSO Office</option>
                                   <option>Mayors Office</option>
                                 </select>
                              

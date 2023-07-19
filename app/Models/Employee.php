@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+  
+    public function position(){
+    	return $this->belongsTo('\App\Models\Employee','position','id');
+    }
+
 }

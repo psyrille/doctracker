@@ -1,8 +1,9 @@
-@extends('layouts.auth-master')
+@extends('layouts.auth')
 
 @section('content')
+<div class="card col-sm-12">
     <form method="post" action="{{ route('register.perform') }}">
-
+  
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <img class="mb-4" src="{!! url('images/bootstrap-logo.svg') !!}" alt="" width="72" height="57">
         
@@ -43,5 +44,7 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
         
         @include('auth.partials.copy')
+
     </form>
+</div>
 @endsection

@@ -52,12 +52,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         //LOGS ROUTES
         Route::get('/log/document', 'LogController@documentlog')->name('log.document');
+        Route::get('/log/view', 'LogController@viewlog')->name('log.view');
       
 
         //TRANSACTION EDIT DELETE
         Route::get('/pending/edit/{id}', 'PendingController@edittransaction')->name('pending.edit');
         Route::post('/pending/edit/update', 'PendingController@updatetransaction')->name('pending.edit.update');
         Route::get('/pending/delete/{id}', 'PendingController@deletetransaction')->name('pending.delete');
+        
        
 
         //EMPLOYEE ROUTES
@@ -70,6 +72,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::post('/list/edit/update', 'ListController@updatelist')->name('list.edit.update');   
         Route::get('/list/delete/{id}', 'ListController@deletelist')->name('list.delete');
 
+        //APPROVED ROUTES
+       
 
     });
       

@@ -5,69 +5,94 @@
       <div class="container-fluid">
          <div class="row mb-2">
       <div class="col-sm-6">
-         <h1 class="m-0"><img src="{{ asset('/asset/img/trans.jpg') }}" width="40" style="border-radius: 100px;"> Approved Transaction </h1>
+         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;"> Pending Transaction</h1>
          </div>
             <div class="col-sm-6">
-             <!--   <ol class="breadcrumb float-sm-right">
+              <!--  <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#" style="color: white;">Home</a></li>
                   <li class="breadcrumb-item active" style="color: white;">Dashboard</li>
                </ol> -->
             </div>
          </div>
       </div>
+   @include('layouts.partials.messages')
       <div class="row card p-5">
             <div class="col-md-12">
                <div class="card-header">
-              
                      <section class="content">
             <div class="container-fluid">
                <div class="card card-info">
+                  <ol class="breadcrumb float-sm-right">
+                     <div class="col-sm-12 col-md-10">
+                        <div class="dataTables_length" id="example1_length">
+                           <label>Show entries
+                            <select name="example1_length" aria-controls="example1" class="custom-select custom-select-sm form-control form-control-sm">
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                           </select> 
+                        </label>
+                        </div>
+                     </div>
+                  <div id="example1_filter" class="dataTables_filter">
+                     <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
+                     </label>
+                  </div>
+               </ol>
                   <br>
                   <div class="col-md-12">
                      <table id="example1" class="table table-hover">
-                        <thead class="btn-cancel">
+                        <thead>
                            <tr>
-                              <th>Category</th>
-                              <th>SourceFile</th>
-                              <th>File Name</th>
-                              <th>FilePath</th>
-                              <th>Remarks</th>
-                              <th>Commit Time</th>
-                              <th>Date Updated</th>
+                              <th>Transaction Code</th>
+                              <th>Full Name</th>
+                              <th>Contact Number</th>
+                              <th>Email Address</th>
+                              <th>Address</th>
+                              <th>Title</th>
+                              <th>Short Description</th>
+                              <th>Purpose</th>
+                              <th class="text-center">Action</th>
                            </tr>
+
                         </thead>
                         <tbody>
+                          @foreach($transactions as $transaction)
                            <tr>
-                              <td>Category-1</td>
-                              <td class="text-info">files/samples.txt</td>
-                              <td>FIlename1</td>
-                              <td class="text-info">files/samples.txt</td>
-                              <td>Remarks</td>
-                              <td>02:35 PM</td>
-                              <td>08-02-21</td>
+                              <td>{{$transaction->transaction_code}}</td>
+                              <td>{{$transaction->fullname}}</td>
+                              <td>{{$transaction->contact_number}}</td>
+                              <td>{{$transaction->email_address}}</td>
+                              <td>{{$transaction->address}}</td>
+                              <td>{{$transaction->title}}</td>
+                              <td>{{$transaction->short_description}}</td>
+                              <td>{{$transaction->purpose}}</td>
+                              <td class="text-center">
+                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/edit/').'/'.$transaction->id }}"><i
+                                       class="fa fa-edit"></i> Update</a>      
+                                      
+                                 <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
+                                       class="fa fa-delete"> </i> Delete</a>
+
+                                     
+                                                          
+                              </td>
                            </tr>
+                           @endforeach
                            <tr>
-                              <td>Category-2</td>
-                              <td class="text-info">files/file-samples.txt</td>
-                              <td>FIlename2</td>
-                              <td class="text-info">files/file-samples.txt</td>
-                              <td>Remarks</td>
-                              <td>02:35 PM</td>
-                              <td>08-02-21</td>
                            </tr>
                         </tbody>
                      </table>
                   </div>
                </div>
             </div>
+            
          </section>
-                        <center>
-               <div class="col-md-5">
-                  
-               </div>
                </center>
             </div>
       </div>  
+
 </div>
       
 @endsection

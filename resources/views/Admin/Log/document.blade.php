@@ -22,18 +22,17 @@
                <div class="card-header">
                  
                </div>
-                        <div class="row card p-2">
-                           <div class="col-md-5">
-                              <div class="form-group">
-                                <ol class="breadcrumb float-sm-left">
+                    <div class="row card p-2">
+                      <div class="col-md-5">
+                          <div class="form-group">
+                              <ol class="breadcrumb float-sm-left">
                                  <label>Search: </label>
                                  <input type="text" name="Search" class="form-control" placeholder="Enter Transaction Code">
-
-                               </ol>
-                              </div>
-                           </div>
-        </center>
-      </div>
+                              </ol>
+                          </div>
+                      </div>
+                </center>
+         </div>
     </div> 
 
 

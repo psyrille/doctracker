@@ -45,13 +45,15 @@
                      <table id="example1" class="table table-hover">
                         <thead>
                            <tr>
+                              <th>Transaction Code</th>
                               <th>Full Name</th>
                               <th>Contact Number</th>
                               <th>Email Address</th>
                               <th>Address</th>
-                              <th>Name of Document</th>
-                              <th>Short Description</th>
+                              <th>Title</th>
+                              <th>Destination</th> 
                               <th>Purpose</th>
+                              <th>Short Description</th>
                               <th class="text-center">Action</th>
                            </tr>
 
@@ -59,20 +61,31 @@
                         <tbody>
                           @foreach($transactions as $transaction)
                            <tr>
+                              <td>{{$transaction->transaction_code}}</td>
                               <td>{{$transaction->fullname}}</td>
                               <td>{{$transaction->contact_number}}</td>
                               <td>{{$transaction->email_address}}</td>
                               <td>{{$transaction->address}}</td>
-                              <td>{{$transaction->name_of_document}}</td>
-                              <td>{{$transaction->short_description}}</td>
+                              <td>{{$transaction->title}}</td>
+                              <td>
+                                 @if(isset($transaction->destinations->fullname))
+                                    {{$transaction->destinations->fullname}}-{{$transaction->destinations->department}}
+                                 @endif
+                              </td>  
                               <td>{{$transaction->purpose}}</td>
+                              <td>{{$transaction->short_description}}</td>
                               <td class="text-center">
                                  <a class="btn btn-sm btn-success" href="{{ url('/pending/edit/').'/'.$transaction->id }}"><i
-                                       class="fa fa-edit"></i> Update</a>
+                                       class="fa fa-edit"></i> Update</a>      
+                                      
+                                 <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
+                                       class="fa fa-delete"> </i> Delete</a>
 
-                                  <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
-                                       class="fa fa-delete"></i> Delete</a>
-                                     
+                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
+                                       class="fa fa-delete"> </i> View</a>
+
+
+                                                          
                               </td>
                            </tr>
                            @endforeach

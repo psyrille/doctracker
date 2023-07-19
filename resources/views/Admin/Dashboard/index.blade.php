@@ -60,6 +60,9 @@
                               <h5>Number of Approved Files</h5>
                            </span>
                            <span class="info-box-number">
+                                @if($nOusers=App\Models\User::count())
+                                 <h2>{{$nOusers}}</h2>
+                              @endif
                               <h2>8</h2>
                            </span>
                         </div>

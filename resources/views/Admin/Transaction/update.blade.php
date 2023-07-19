@@ -53,29 +53,24 @@
                            </div>
                            <div class="col-md-12">
                               <div class="form-group">
-                                <label> Name of Document </label>
+                                <label> Title </label>
                                 <input type="hidden" name="id" value="{{$transaction->id}}">
-                                 <input type="text" name="name_of_document" value="{{$transaction->name_of_document}}" class="form-control" placeholder="Enter Name of Document">
+                                 <input type="text" name="title" value="{{$transaction->title}}" class="form-control" placeholder="Enter Title">
                               </div>
                            </div>
-                         <!--   <div class="col-md-6">
+                      <div class="col-md-12">
                               <div class="form-group">
-                                <label style="color: white;"> Type of Document </label>
-                                <select class="form-control">
-                                 <option>
-                                    
-                                 </option>
-                                   
-                                </select>                              
-                             </div>
-                           </div> -->
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                <label>Short Description</label>
-                                <input type="hidden" name="id" value="{{$transaction->id}}">
-                                <input type="text" name="short_description" value="{{$transaction->short_description}}" class="form-control" placeholder="Enter Short Description">
+                                <label> Destination</label>
+                                <select name="destination" class="form-control">
+                                  <option value="" readonly>Select Destination</option>
+                                  @if($employees=App\Models\Employee::get())
+                                    @foreach($employees as $employee)
+                                      <option value="{{ $employee->id}}">{{ $employee->fullname }} -{{ $employee->department }}</option>
+                                    @endforeach
+                                  @endif
+                                </select>
                               </div>
-                           </div>
+                           </div>  
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label>Purpose</label>
@@ -84,6 +79,13 @@
                               </div>
                            </div>
                         </div>
+                        <div class="col-md-12">
+                              <div class="form-group">
+                                <label>Short Description</label>
+                                <input type="hidden" name="id" value="{{$transaction->id}}">
+                                <input type="text" name="short_description" value="{{$transaction->short_description}}" class="form-control" placeholder="Enter Short Description">
+                              </div>
+                           </div>
                         <center>
                <div class="col-md-5">
                   <button type="submit" class="btn btn-primary" style="background-color: black;">Save</button>

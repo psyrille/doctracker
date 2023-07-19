@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
                $table->id();
+               $table->string('transaction_code');
                $table->string('fullname');
                $table->string('contact_number');
                $table->string('email_address')->unique();
                $table->string('address')->nullable();
-               $table->string('name_of_document');
-               $table->text('short_description');
+               $table->string('title');
+               $table->string('destination');
                $table->text('purpose');
+               $table->text('short_description');
                $table->timestamps();
         });
     }
