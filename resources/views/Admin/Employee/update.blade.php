@@ -51,7 +51,7 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Department </label>
-                                <select class="form-control" name="department"  value="{{$employee->department}}" placeholder="Enter department">
+                                <select class="form-control" name="department"  placeholder="Enter department">
                                     @if($employees=App\Models\Employee::get())
                                     @foreach($employees as $employee)
                                       @if($employee->id == $employee->department)
@@ -59,19 +59,19 @@
                                       @else
                                         <option value="{{ $employee->id}}">{{ $employee->department }}</option>
                                       @endif
-                                      <option></option>
-                                  <option>SB Office</option>
-                                  <option>Budget</option>
-                                  <option>Accounting</option>
-                                  <option>Treasurer</option>
-                                  <option>MPDC</option>
-                                  <option>Engineering</option>
-                                  <option>MAGSO</option>
-                                  <option>MSWDO</option>
-                                  <option>Assessor Office</option>
-                                  <option>Civil Registrar Office</option>
-                                  <option>GSO Office</option>
-                                  <option>Mayors Office</option>
+                                  <!--     <option></option>
+                                          <option>SB Office</option>
+                                          <option>Budget</option>
+                                          <option>Accounting</option>
+                                          <option>Treasurer</option>
+                                          <option>MPDC</option>
+                                          <option>Engineering</option>
+                                          <option>MAGSO</option>
+                                          <option>MSWDO</option>
+                                          <option>Assessor Office</option>
+                                          <option>Civil Registrar Office</option>
+                                          <option>GSO Office</option>
+                                          <option>Mayors Office</option> -->
                                     @endforeach
                                   @endif
                                 </select>

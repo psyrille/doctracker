@@ -50,22 +50,16 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Department </label>
-                                <select class="form-control" name="department" placeholder="Enter department">
-                                  <option></option>
-                                  <option>SB Office</option>
-                                  <option>Budget</option>
-                                  <option>Accounting</option>
-                                  <option>Treasurer</option>
-                                  <option>MPDC</option>
-                                  <option>Engineering</option>
-                                  <option>MAGSO</option>
-                                  <option>MSWDO</option>
-                                  <option>Assessor Office</option>
-                                  <option>Civil Registrar Office</option>
-                                  <option>GSO Office</option>
-                                  <option>Mayors Office</option>
+                                 <select class="form-control" name="department" placeholder="Enter department">
+                                 @if($employees=App\Models\Employee::get()) 
+                                    <option value="">Select Department</option>
+                                    @foreach($employees as $employee)
+                                      @if($employee->id == $employee->department)
+                                        <option value="{{ $employee->id}}">{{ $employee->department }}</option>
+                                      @else
+                                    @endforeach
+                                  @endif
                                 </select>
-                             
                               </div>
                            </div>             
                          </div>

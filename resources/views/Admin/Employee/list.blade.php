@@ -61,13 +61,13 @@
                               <td>{{$employee->password}}</td>
                               <td>{{$employee->device_id}}</td>
                               <td>{{$employee->position}}</td>
-                               <td>
+                              <td>
+                                 {{$employee->department}}
                                  @if(isset($employee->departments->fullname))
                                     {{$employee->departments->fullname}}-{{$employee->departments->department}}
                                  @endif
                               </td>  
-                              <td>{{$employee->department}}</td>
-
+                             
                               <td class="text-center">
                                  <a class="btn btn-sm btn-success" href="{{ url('/list/edit/').'/'.$employee->id }}"><i
                                        class="fa fa-edit"></i> Update</a>

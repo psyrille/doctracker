@@ -61,7 +61,6 @@ class PendingController extends Controller
             return redirect()->back()->withErrors('Deleted!');
         }
     }
-    
 
 }
 
