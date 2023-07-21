@@ -5,7 +5,7 @@
       <div class="container-fluid">
          <div class="row mb-2">
       <div class="col-sm-6">
-         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;">New Employee</h1>
+         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;">Update Employee</h1>
          </div>
             <div class="col-sm-6">
                <!-- <ol class="breadcrumb float-sm-right">
@@ -32,14 +32,12 @@
                            <div class="col-md-3">
                               <div class="form-group">
                                  <label>Password</label>
-                                   <input type="hidden" name="id" value="{{$employee->id}}">
                                  <input type="text" name="password"  class="form-control" placeholder="Enter Password">
                               </div>
                            </div>
                            <div class="col-md-4">
                               <div class="form-group">
                                  <label>Device id</label>
-                                   <input type="hidden" name="id" value="{{$employee->id}}">
                                  <input type="text" name="device_id" value="{{$employee->device_id}}" class="form-control" placeholder="Enter Device id">
                               </div>
                            </div>
@@ -47,15 +45,21 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Position </label>
-                                   <input type="hidden" name="id" value="{{$employee->id}}">
                                  <input type="text" name="position" value="{{$employee->position}}" class="form-control" placeholder="Enter Position">
                               </div>
                            </div>
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Department </label>
-                                <select class="form-control" name="department" placeholder="Enter department">
-                                   <option></option>
+                                <select class="form-control" name="department"  value="{{$employee->department}}" placeholder="Enter department">
+                                    @if($employees=App\Models\Employee::get())
+                                    @foreach($employees as $employee)
+                                      @if($employee->id == $employee->department)
+                                        <option value="{{ $employee->id}}" selected="">{{ $employee->department }}</option>
+                                      @else
+                                        <option value="{{ $employee->id}}">{{ $employee->department }}</option>
+                                      @endif
+                                      <option></option>
                                   <option>SB Office</option>
                                   <option>Budget</option>
                                   <option>Accounting</option>
@@ -68,6 +72,8 @@
                                   <option>Civil Registrar Office</option>
                                   <option>GSO Office</option>
                                   <option>Mayors Office</option>
+                                    @endforeach
+                                  @endif
                                 </select>
                              
                               </div>

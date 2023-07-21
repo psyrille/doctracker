@@ -135,12 +135,6 @@
                         <p style="color: white;"> Document Logs</p>
                      </a>
                   </li>
-                  <li class="nav-item">
-                     <a href="{{ route('log.view') }}" class="nav-link">
-                        <i class="nav-icon far fa-circle" style="color: white;"></i>
-                        <p style="color: white;"> View Logs </p>
-                     </a>
-                  </li>
                </ul>
                   </li>
                   <br>

@@ -52,7 +52,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         //LOGS ROUTES
         Route::get('/log/document', 'LogController@documentlog')->name('log.document');
-        Route::get('/log/view', 'LogController@viewlog')->name('log.view');
+        Route::get('/log/view/{id}', 'LogController@viewlog')->name('log.view');
       
 
         //TRANSACTION EDIT DELETE

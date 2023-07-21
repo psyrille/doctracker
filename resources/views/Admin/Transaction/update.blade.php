@@ -22,24 +22,27 @@
             <div class="col-md-12">
                <div class="card-header"></div>
                         <div class="row">
+                           <div class="col-md-0">
+                              <div class="form-group">
+                                 <input type="hidden" name="id" value="{{$transaction->id}}">
+                                 <input type="hidden" name="transaction_code" value="{{$transaction->transaction_code}}" class="form-control" placeholder="Enter Full Name">
+                              </div>
+                          </div>
                            <div class="col-md-5">
                               <div class="form-group">
                                  <label>Full Name </label>
-                                 <input type="hidden" name="id" value="{{$transaction->id}}">
                                  <input type="text" name="fullname" value="{{$transaction->fullname}}" class="form-control" placeholder="Enter Full Name">
                               </div>
                            </div>
                            <div class="col-md-3">
                               <div class="form-group">
                                  <label>Contact Number</label>
-                                 <input type="hidden" name="id" value="{{$transaction->id}}">
                                  <input type="text" name="contact_number"value="{{$transaction->contact_number}}" class="form-control" placeholder="+63">
                               </div>
                            </div>
                            <div class="col-md-4">
                               <div class="form-group">
                                  <label>Email Address</label>
-                                 <input type="hidden" name="id" value="{{$transaction->id}}">
                                  <input type="text" name="email_address" value="{{$transaction->email_address}}" class="form-control" placeholder="@example.com">
                               </div>
                            </div>
@@ -47,25 +50,27 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Address </label>
-                                <input type="hidden" name="id" value="{{$transaction->id}}">
                                  <input type="text" name="address" value="{{$transaction->address}}" class="form-control" placeholder="Enter Address">
                               </div>
                            </div>
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Title </label>
-                                <input type="hidden" name="id" value="{{$transaction->id}}">
                                  <input type="text" name="title" value="{{$transaction->title}}" class="form-control" placeholder="Enter Title">
                               </div>
                            </div>
                       <div class="col-md-12">
                               <div class="form-group">
                                 <label> Destination</label>
-                                <select name="destination" class="form-control">
+                                <select name="destination" class="form-control" >
                                   <option value="" readonly>Select Destination</option>
                                   @if($employees=App\Models\Employee::get())
                                     @foreach($employees as $employee)
-                                      <option value="{{ $employee->id}}">{{ $employee->fullname }} -{{ $employee->department }}</option>
+                                      @if($employee->id == $transaction->destination)
+                                        <option value="{{ $employee->id}}" selected="">{{ $employee->fullname }} -{{ $employee->department }}</option>
+                                      @else
+                                        <option value="{{ $employee->id}}">{{ $employee->fullname }} -{{ $employee->department }}</option>
+                                      @endif
                                     @endforeach
                                   @endif
                                 </select>

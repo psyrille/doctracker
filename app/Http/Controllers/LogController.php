@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Log;
+use App\Models\Transaction;
 
 class LogController extends Controller
 {
@@ -15,12 +16,10 @@ class LogController extends Controller
               'logs'=>$logs
         ]);
     }
-     public function viewlog(){
-        $logs=Log::orderby('created_at','desc')->paginate(10);
-
-        
+     public function viewlog(Request $request){
+        $transaction=Transaction::where('id',  $request->id)->first();
         return view('Admin.Log.view',[
-              'logs'=>$logs
+            'transaction'=>$transaction
         ]);
     }
     

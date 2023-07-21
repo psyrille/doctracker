@@ -81,7 +81,7 @@
                                  <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
                                        class="fa fa-delete"> </i> Delete</a>
 
-                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
+                                 <a class="btn btn-sm btn-success" href="{{ url('/log/view/').'/'.$transaction->id }}"><i
                                        class="fa fa-delete"> </i> View</a>
 
 

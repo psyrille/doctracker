@@ -15,7 +15,7 @@
       <div class="container-fluid">
          <div class="row mb-2">
       <div class="col-sm-6">
-         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;">New Transaction</h1>
+         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;">View Transaction</h1>
          </div>
             <div class="col-sm-6">
                <!-- <ol class="breadcrumb float-sm-right">
@@ -29,36 +29,37 @@
          <div class="container">
              @include('layouts.partials.messages')
       <div class="row card p-5" style="background-color: white;">
-         <form action="{{ route('log.view') }}"  method="post">
-            @csrf
-    <article class="card">
-        <header class="card-header"> My Tracking </header>
-        <div class="card-body">
-            <h6>Order ID: OD45345345435</h6>
             <article class="card">
-                <div class="card-body row">
-                    <div class="col"> <strong>Estimated Delivery time:</strong> <br>29 nov 2019 </div>
-                    <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
-                    <div class="col"> <strong>Status:</strong> <br> Picked by the courier </div>
-                    <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+                <header class="card-header">  <strong> MY TRACKING </strong> </header>
+                <div class="card-body">
+                    <article class="card">
+                        <div class="card-body row">
+                            <div class="col"> <strong>Transaction Code:</strong> <br>{{ $transaction->transaction_code}}</div>
+                            <div class="col"> <strong>Title</strong> <br>{{ $transaction->title}} </div>
+                            <div class="col"> <strong>Fullname</strong> <br>{{ $transaction->fullname}}</div>
+                            <div class="col"> <strong>Contact</strong> <br>{{ $transaction->contact_number}} | <i class="fa fa-phone"></i> {{ $transaction->email_address}} </div>
+                        </div>
+                    </article>
+                    <div class="track">
+                        @if($logs=\App\Models\Log::where('transaction_id', $transaction->id)->get())
+                            @foreach($logs as $log)
+                                <div class="step active"> 
+                                    <span class="icon"> <i class="fa fa-check"></i></span> 
+                                    <span class="text">{{$log->title}}</span> 
+                                    <span class="text">{{$log->short_description}}</span> 
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <hr>
+                   
+                    <hr>
+                    <a href="{{ route('transaction.pending') }}" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back </a>
                 </div>
 
             </article>
-            <div class="track">
-                <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
-                <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier</span> </div>
-                <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready for pickup</span> </div>
-            </div>
-            <hr>
-           
-            <hr>
-            <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+
         </div>
-
-    </article>
-
-</div>
 </div>
 
 @endsection

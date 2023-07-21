@@ -7,6 +7,7 @@ use App\Models\Transaction;
 
 
 
+
 class PendingController extends Controller
 {
 	 public function edittransaction(Request $request){
@@ -26,9 +27,10 @@ class PendingController extends Controller
         ]);
     }
     public function updatetransaction(Request $request){
+       
 
         $Updatesave=Transaction::where('id',$request->id)->first();
-        $Transactionsave->transaction_code = $request->transaction_code;
+        $Updatesave->transaction_code = $request->transaction_code;
         $Updatesave->fullname = $request->fullname;
         $Updatesave->contact_number = $request->contact_number;
         $Updatesave->email_address= $request->email_address;

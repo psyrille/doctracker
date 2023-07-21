@@ -61,6 +61,11 @@
                               <td>{{$employee->password}}</td>
                               <td>{{$employee->device_id}}</td>
                               <td>{{$employee->position}}</td>
+                               <td>
+                                 @if(isset($employee->departments->fullname))
+                                    {{$employee->departments->fullname}}-{{$employee->departments->department}}
+                                 @endif
+                              </td>  
                               <td>{{$employee->department}}</td>
 
                               <td class="text-center">
