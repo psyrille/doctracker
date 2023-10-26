@@ -9,6 +9,14 @@
         
         <h1 class="h3 mb-3 fw-normal">Register</h1>
 
+        <div class="form-group">
+                    <label for="type" class="control-label">Type</label>
+                    <select name="type" id="type" class="form-control form-control-sm rounded-0" required>
+                    <option value="1" >Administrator</option>
+                    <option value="2" >Staff</option>
+                    </select>
+                </div>
+
         <div class="form-group form-floating mb-3">
             <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="name@example.com" required="required" autofocus>
             <label for="floatingEmail">Email address</label>

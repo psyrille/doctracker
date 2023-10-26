@@ -62,8 +62,8 @@
                            <span class="info-box-number">
                                 @if($nOusers=App\Models\User::count())
                                  <h2>{{$nOusers}}</h2>
-                              @endif
-                              <h2>8</h2>
+                                @endif
+                           
                            </span>
                         </div>
                      </div>

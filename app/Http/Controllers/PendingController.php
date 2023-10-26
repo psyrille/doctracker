@@ -45,6 +45,7 @@ class PendingController extends Controller
         }
     }
      public function deletetransaction(Request $request){
+        
 
         $Deletesave=Transaction::where('id',$request->id)->first();
         $Deletesave->transaction_code = $request->transaction_code;
@@ -60,6 +61,12 @@ class PendingController extends Controller
         if($Deletesave->delete()) { 
             return redirect()->back()->withErrors('Deleted!');
         }
+    }
+    public function viewtransaction(Request $request){
+        $transactions=Transaction::orderby('created_at','desc')->paginate(10);
+        return view('Admin.Transaction.view',[
+            'transactions'=>$transactions
+        ]);
     }
 
 }

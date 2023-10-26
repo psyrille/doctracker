@@ -50,16 +50,13 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Department </label>
-                                 <select class="form-control" name="department" placeholder="Enter department">
+                                 <textarea class="form-control" name="department" placeholder="Enter department"> </textarea>
                                  @if($employees=App\Models\Employee::get()) 
-                                    <option value="">Select Department</option>
                                     @foreach($employees as $employee)
-                                      @if($employee->id == $employee->department)
-                                        <option value="{{ $employee->id}}">{{ $employee->department }}</option>
-                                      @else
+                                      @if($employee->id == $employee->department)   
+                                      @endif
                                     @endforeach
-                                  @endif
-                                </select>
+                                  @endif   
                               </div>
                            </div>             
                          </div>

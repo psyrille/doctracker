@@ -10,7 +10,7 @@
    <link rel="stylesheet" href="{{ asset('/asset/css/adminlte.min.css') }}">
    <link rel="stylesheet" href="{{ asset('/asset/css/style.css') }}">
    <link rel="stylesheet" href="{{ asset('/asset/tables/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-   <link rel="stylesheet" href="{{ asset('/asset/tables/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('/asset/tables/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
    <style type="text/css">
 
       td a.btn{
@@ -61,7 +61,7 @@
                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                   data-accordion="false">
                      <li class="nav-item">
-                        <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                        <a href="{{ route('user.dashboard') }}" class="nav-link">
                            <img src="{{ asset('/asset/img/dashboard-icon.jpg') }}" width="30" style="border-radius: 100px;">
                            <p style="color: white;">
                               Dashboard
@@ -79,13 +79,7 @@
                      </a>
                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                     <a href="{{ route('transaction.new') }}" class="nav-link">
-                        <i class="nav-icon far fa-circle" style="color: white;"></i>
-                        <p style="color: white;"> New </p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="{{ route('transaction.pending') }}" class="nav-link">
+                     <a href="{{ route('transaction.user') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
                         <p style="color: white;">Pending </p>
                      </a>
@@ -98,28 +92,6 @@
                   </li>
                </ul>
                   </li>
-                  <li class="nav-item">
-                     <a href="#" class="nav-link">
-                        <img src="{{ asset('/asset/img/user-icon.jpg') }}" width="30" style="border-radius: 50px;">
-                        <p style="color: white;">
-                          Employees
-                        </p>
-                        <i class="right fas fa-angle-left" style="color: white;"></i>
-                     </a>
-               <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                     <a href="{{ route('employee.new') }}" class="nav-link">
-                        <i class="nav-icon far fa-circle" style="color: white;"></i>
-                        <p style="color: white;"> New </p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="{{ route('employee.list') }}" class="nav-link">
-                        <i class="nav-icon far fa-circle" style="color: white;"></i>
-                        <p style="color: white;"> List </p>
-                     </a>
-                  </li>
-               </ul>
                 <li class="nav-item">
                      <a href="#" class="nav-link">
                         <img src="{{ asset('/asset/img/user-icon.jpg') }}" width="30" style="border-radius: 50px;">
@@ -153,7 +125,7 @@
                      </a>
                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                     <a href="{{ route ('logout.perform')}}" class="nav-link">
+                     <a href="{{ route ('user.logout.perform')}}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
                         <p style="color: white;"> Logout</p>
                      </a>
@@ -166,24 +138,6 @@
    <!-- jQuery -->
    <script src="{{ asset('/asset/jquery/jquery.min.js') }}"></script>
    <script src="{{ asset('/asset/js/adminlte.js') }}"></script>
-
-
-
-   <script src="{{ asset('/jquery/jquery.min.js') }}"></script>
-   <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
-   <script src="{{asset('/js/adminlte.js') }}"></script>
-   <!-- DataTables  & Plugins -->
-   <script src="{{asset('/asset/tables/datatables/jquery.dataTables.min.js') }}"></script>
-   <script src="{{asset('/asset/tables/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-   <script src="{{asset('/asset/tables/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-   <script src="{{asset('/asset/tables/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-   <script>
-      $(function () {
-         $("#example1").DataTable();
-      });
-   </script>
-
-
 </body>
 
 </html>

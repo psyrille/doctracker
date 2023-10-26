@@ -62,18 +62,18 @@
                       <div class="col-md-12">
                               <div class="form-group">
                                 <label> Destination</label>
-                                <select name="destination" class="form-control" >
-                                  <option value="" readonly>Select Destination</option>
+                                <select name="destination" class="form-control" placeholder="Enter Destination">
                                   @if($employees=App\Models\Employee::get())
                                     @foreach($employees as $employee)
                                       @if($employee->id == $transaction->destination)
-                                        <option value="{{ $employee->id}}" selected="">{{ $employee->fullname }} -{{ $employee->department }}</option>
-                                      @else
+                                       <option value="{{ $employee->id}}"selected="">{{ $employee->fullname }} -{{ $employee->department }}</option>
+                                       @else
                                         <option value="{{ $employee->id}}">{{ $employee->fullname }} -{{ $employee->department }}</option>
                                       @endif
                                     @endforeach
                                   @endif
-                                </select>
+                               </select>
+                                
                               </div>
                            </div>  
                            <div class="col-md-12">

@@ -1,4 +1,4 @@
- @extends('layouts.default')
+ @extends('layouts.user.default')
 
 @section('content')
 <div class="content-header">
@@ -16,6 +16,9 @@
          </div>
       </div>
    @include('layouts.partials.messages')
+      <div class="row card p-5" style="background-color: white;">
+         <form action="{{ route('transaction.user') }}"  method="post">
+            @csrf
       <div class="row card p-7">
             <div class="col-md-12">
                <div class="card-header">
@@ -35,12 +38,10 @@
                         </label>
                         </div>
                      </div>
-                 <div class="search-container">
-                   <form action="/search" method="GET">
-                     <label>Search:</label>
-                      <input type="text" placeholder="" name="search" class="search-box" style="padding: 0px;border: 1px solid #ccc; border-radius: 5px;width: 150px;">
-                  </form>
-               </div>
+                  <div id="example1_filter" class="dataTables_filter">
+                     <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
+                     </label>
+                  </div>
                </ol>
                   <br>
                   <div class="col-md-12">
@@ -78,13 +79,13 @@
                               <td>{{$transaction->purpose}}</td>
                               <td>{{$transaction->short_description}}</td>
                               <td class="text-center">
-                                 <a class="btn btn-sm btn-success" href="{{ url('admin/pending/edit/').'/'.$transaction->id }}"><i
+                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/edit/update/').'/'.$transaction->id }}"><i
                                        class="fa fa-edit"></i> Update</a>      
                                       
-                                 <a class="btn btn-sm btn-danger" href="{{ url('admin/pending/delete/').'/'.$transaction->id }}"><i
+                                 <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
                                        class="fa fa-delete"> </i> Delete</a>
 
-                                 <a class="btn btn-sm btn-success" href="{{ url('admin/pending/view/').'/'.$transaction->id }}"><i
+                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/view/').'/'.$transaction->id }}"><i
                                        class="fa fa-delete"> </i> View</a>
 
 
@@ -106,11 +107,6 @@
       </div>  
 
 </div>
- <script>
-      $(function () {
-         $("#example1").DataTable();
-      });
-   </script>
       
 @endsection
 

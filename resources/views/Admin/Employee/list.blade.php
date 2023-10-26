@@ -35,10 +35,11 @@
                         </label>
                         </div>
                      </div>
-                  <div id="example1_filter" class="dataTables_filter">
-                     <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
-                     </label>
-                  </div>
+                   <div class="search-container">
+                   <form action="/search" method="GET">
+                     <label style="margin-left:0px ;">Search:</label>
+                      <input type="text" placeholder="" name="search" class="search-box" style="padding: 0px;border: 1px solid #ccc; border-radius: 5px;width:120px;">
+                  </form>
                </ol>
                   <br>
                   <div class="col-md-12">
@@ -69,9 +70,9 @@
                               </td>  
                              
                               <td class="text-center">
-                                 <a class="btn btn-sm btn-success" href="{{ url('/list/edit/').'/'.$employee->id }}"><i
+                                 <a class="btn btn-sm btn-success" href="{{ url('admin/list/edit/').'/'.$employee->id }}"><i
                                        class="fa fa-edit"></i> Update</a>
-                                <a class="btn btn-sm btn-danger" href="{{ url('/list/delete/').'/'.$employee->id }}"><i
+                                <a class="btn btn-sm btn-danger" href="{{ url('admin/list/delete/').'/'.$employee->id }}"><i
                                        class="fa fa-delete"></i> Delete</a>
                                        {{method_field('DELETE')}}
                                         @csrf

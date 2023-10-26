@@ -25,6 +25,26 @@ class LoginController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
+     public function customLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $role = User_role::where('userid',Auth::user()->id)->first();
+            if (Auth::user() && $role->roleid==0){
+                 return redirect('/admin');
+            }elseif(Auth::user() && $role->roleid==2){
+                 return redirect('/user');
+            }
+        }
+        return redirect("/login")->withSuccess('Login details are not valid');
+    }
+ 
+ 
+ 
     public function login(LoginRequest $request)
     {
         $credentials = $request->getCredentials();

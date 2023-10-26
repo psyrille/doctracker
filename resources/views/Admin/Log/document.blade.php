@@ -1,88 +1,50 @@
  @extends('layouts.default')
 
 @section('content')
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Tracking Search Bar</title>
+    <!-- Add your CSS link here -->
+    <style>
+        .search-container {
+            text-align: center;
+            margin-top: 0px;
+        }
 
+        .search-box {
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 800px;
+            margin-top: 100px;
+            font-size: 20px;
+        }
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
- 
-  <style type="text/css">
-      body,html{
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: #e74c3c !important;
-    }
+        .search-button {
+            padding: 35px 60px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
 
-    .searchbar{
-    margin-bottom: auto;
-    margin-top: auto;
-    height: 60px;
-    background-color: #353b48;
-    border-radius: 30px;
-    padding: 10px;
-    }
-
-    .search_input{
-    color: white;
-    border: 0;
-    outline: 0;
-    background: none;
-    width: 0;
-    caret-color:transparent;
-    line-height: 40px;
-    transition: width 0.4s linear;
-    }
-
-    .search_input{
-    padding: 5px;
-    width: 930px;
-    caret-color:red;
-    transition: width 0.4s linear;
-    }
-
-    .searchbar:hover > .search_icon{
-    background: white;
-    color: #e74c3c;
-    }
-
-    .search_icon{
-    height: 40px;
-    width: 40px;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color:white;
-    text-decoration:none;
-    }
-  </style>
-  <!-- Coded with love by Mutiullah Samim-->
-  <body>
-     <div class="container">
-             @include('layouts.partials.messages')
-      <div class="row card p-5" style="background-color: white;">
-        <p style="font-size: 30px;">Search Transaction Code</p>
-            <article class="card">
-    <div class="container h-100">
-      <div class="d-flex direction-column-center h-100">
-        <div class="searchbar">
-          <input class="search_input" type="text" name="" placeholder="Search...">
-          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-          <!--  -->
-        </div>
-      </div>
-    </div>
-  </article>
+<div class="search-container">
+    <form action="/search" method="GET">
+        <input type="text" placeholder="Enter Transaction Code" name="search" class="search-box">
+        <button type="submit" class="search-button">Search</button>
+    </form>
 </div>
-</div>
-  </body>
+
+</body>
+</html>
+
 
 
       

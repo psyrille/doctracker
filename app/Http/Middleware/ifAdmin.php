@@ -5,6 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\User_role;
+use Auth;
+
 
 class ifAdmin
 {
@@ -16,7 +19,7 @@ class ifAdmin
     public function handle(Request $request, Closure $next): Response
     {
     	$role = User_role::where('userid', Auth::user()->id)->first();
-    	if(Auth::user()&&$role->roleid==1){
+    	if(Auth::user()&&$role->roleid==0){
     		 return $next($request);
     	}
        abort(403);

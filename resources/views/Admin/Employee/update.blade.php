@@ -51,13 +51,10 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Department </label>
-                                <select class="form-control" name="department"  placeholder="Enter department">
+                                <textarea class="form-control" name="department"  placeholder="Enter department"> </textarea>
                                     @if($employees=App\Models\Employee::get())
                                     @foreach($employees as $employee)
                                       @if($employee->id == $employee->department)
-                                        <option value="{{ $employee->id}}" selected="">{{ $employee->department }}</option>
-                                      @else
-                                        <option value="{{ $employee->id}}">{{ $employee->department }}</option>
                                       @endif
                                   <!--     <option></option>
                                           <option>SB Office</option>
@@ -74,7 +71,6 @@
                                           <option>Mayors Office</option> -->
                                     @endforeach
                                   @endif
-                                </select>
                              
                               </div>
                            </div>             
