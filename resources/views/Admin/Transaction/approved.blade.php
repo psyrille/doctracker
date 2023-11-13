@@ -5,7 +5,7 @@
       <div class="container-fluid">
          <div class="row mb-2">
       <div class="col-sm-6">
-         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;"> Pending Transaction</h1>
+         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;"> Approved Transaction</h1>
          </div>
             <div class="col-sm-6">
               <!--  <ol class="breadcrumb float-sm-right">
@@ -16,69 +16,21 @@
          </div>
       </div>
    @include('layouts.partials.messages')
-      <div class="row card p-5">
-            <div class="col-md-12">
-               <div class="card-header">
-                     <section class="content">
-            <div class="container-fluid">
-               <div class="card card-info">
-                  <ol class="breadcrumb float-sm-right">
-                     <div class="col-sm-12 col-md-10">
-                        <div class="dataTables_length" id="example1_length">
-                           <label>Show entries
-                            <select name="example1_length" aria-controls="example1" class="custom-select custom-select-sm form-control form-control-sm">
-                              <option value="10">10</option>
-                              <option value="25">25</option>
-                              <option value="50">50</option>
-                              <option value="100">100</option>
-                           </select> 
-                        </label>
-                        </div>
-                     </div>
-                  <div id="example1_filter" class="dataTables_filter">
-                     <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
-                     </label>
-                  </div>
-               </ol>
-                  <br>
-                  <div class="col-md-12">
-                     <table id="example1" class="table table-hover">
-                        <thead>
-                           <tr>
-                              <th>Transaction Code</th>
-                              <th>Full Name</th>
-                              <th>Contact Number</th>
-                              <th>Email Address</th>
-                              <th>Address</th>
-                              <th>Title</th>
-                              <th>Short Description</th>
-                              <th>Purpose</th>
-                              <th class="text-center">Action</th>
-                           </tr>
+      @foreach($posts as $post)
+    <div>
+        <h2>{{ $post->title }}</h2>
+        <p>{{ $post->content }}</p>
+        <p>Status: {{ $post->status }}</p>
 
-                        </thead>
-                        <tbody>
-                          @foreach($transactions as $transaction)
-                           <tr>
-                              <td>{{$transaction->transaction_code}}</td>
-                              <td>{{$transaction->fullname}}</td>
-                              <td>{{$transaction->contact_number}}</td>
-                              <td>{{$transaction->email_address}}</td>
-                              <td>{{$transaction->address}}</td>
-                              <td>{{$transaction->title}}</td>
-                              <td>{{$transaction->short_description}}</td>
-                              <td>{{$transaction->purpose}}</td>
-                              <td class="text-center">
-                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/edit/').'/'.$transaction->id }}"><i
-                                       class="fa fa-edit"></i> Update</a>      
-                                      
-                                 <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
-                                       class="fa fa-delete"> </i> Delete</a>
+        @if($post->status === 'pending')
+            <form method="post" action="{{ route('approved.status', $post) }}">
+                @csrf
+                @method('put')
+                <button type="submit">Approve</button>
+            </form>
+        @endif
+    </div>
 
-                                     
-                                                          
-                              </td>
-                           </tr>
                            @endforeach
                            <tr>
                            </tr>
@@ -94,6 +46,11 @@
       </div>  
 
 </div>
+ <script>
+      $(function () {
+         $("#example1").DataTable();
+      });
+   </script>
       
 @endsection
 

@@ -1,4 +1,4 @@
- @extends('layouts.default')
+   @extends('layouts.default')
 
 @section('content')
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
@@ -27,10 +27,8 @@
       </div>
 
          <div class="container">
-        @include('layouts.partials.messages')
+             @include('layouts.partials.messages')
       <div class="row card p-5" style="background-color: white;">
-        <form action="{{ route('pending.edit.view') }}"  method="post">
-            @csrf
             <article class="card">
                 <header class="card-header">  <strong> MY TRACKING </strong> </header>
                 <div class="card-body">
@@ -43,8 +41,8 @@
                         </div>
                     </article>
                     <div class="track">
-                        @if($transactions=\App\Models\Transaction::get())
-                            @foreach($transactions as $transaction)
+                        @if($transaction=\App\Models::where('transaction_id', $transaction->id)->get())
+                            @foreach($transaction as $transaction)
                                 <div class="step active"> 
                                     <span class="icon"> <i class="fa fa-check"></i></span> 
                                     <span class="text">{{$transaction->title}}</span> 

@@ -102,7 +102,7 @@
                      </a>
                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                     <a href="{{ route('log.document') }}" class="nav-link">
+                     <a href="{{ route('log.user') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
                         <p style="color: white;"> Document Logs</p>
                      </a>

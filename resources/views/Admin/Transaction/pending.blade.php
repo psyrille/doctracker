@@ -86,6 +86,8 @@
 
                                  <a class="btn btn-sm btn-success" href="{{ url('admin/pending/view/').'/'.$transaction->id }}"><i
                                        class="fa fa-delete"> </i> View</a>
+                                 <a class="btn btn-sm btn-success" href="{{ url('admin/approved/status/').'/'.$transaction->id }}"><i
+                                       class="fa fa-delete"> </i> Status</a>
 
 
                                                           

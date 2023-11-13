@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 
-
-
-
 class PendingController extends Controller
 {
 	 public function edittransaction(Request $request){
@@ -62,10 +59,12 @@ class PendingController extends Controller
             return redirect()->back()->withErrors('Deleted!');
         }
     }
-    public function viewtransaction(Request $request){
-        $transactions=Transaction::orderby('created_at','desc')->paginate(10);
+    public function viewlog(){
+        $transaction=Transaction::orderby('created_at','desc')->paginate(10);
+
+        
         return view('Admin.Transaction.view',[
-            'transactions'=>$transactions
+              'transaction'=>$transaction
         ]);
     }
 
