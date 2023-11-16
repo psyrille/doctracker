@@ -36,7 +36,6 @@ class ListController extends Controller
      	$Editsave=Employee::where('id',$request->id)->first();
         $Editsave->fullname = $request->fullname;
         // $Employeesave->password = Hash::make($request->password);
-        $Editsave->device_id= $request->device_id;
         $Editsave->position = $request->position;
         $Editsave->department = $request->department;
         

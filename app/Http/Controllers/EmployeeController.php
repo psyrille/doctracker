@@ -25,7 +25,6 @@ class EmployeeController extends Controller
         $Employeesave= new Employee();
         $Employeesave->fullname = $request->fullname;
         $Employeesave->password = Hash::make($request->password);
-        $Employeesave->device_id= $request->device_id;
         $Employeesave->position = $request->position;
         $Employeesave->department = $request->department;
         

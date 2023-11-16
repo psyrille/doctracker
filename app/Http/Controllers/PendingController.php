@@ -59,12 +59,14 @@ class PendingController extends Controller
             return redirect()->back()->withErrors('Deleted!');
         }
     }
-    public function viewlog(){
-        $transaction=Transaction::orderby('created_at','desc')->paginate(10);
-
+    public function viewlog(Request $request){
+        $transactions =Transaction::where('id',$request->id)->orderby('created_at','desc')->paginate(10);
+        $transaction_details =Transaction::where('id',$request->id)->first();
+                ['last_visited_at' => now()];
         
         return view('Admin.Transaction.view',[
-              'transaction'=>$transaction
+              'transactions'=>$transactions,
+              'transaction_details' => $transaction_details
         ]);
     }
 

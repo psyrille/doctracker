@@ -26,10 +26,17 @@ Route::group(['middleware' => ['guest']], function() {
     Route::get('/register', 'RegisterController@show')->name('register.show');
     Route::post('/register', 'RegisterController@register')->name('register.perform');
 
+//REGISTER USER ROUTE
+    Route::get('/registration', 'RegistrationController@show')->name('registration.show');
+    Route::post('/registration', 'RegistrationController@register')->name('registration.perform');
+    
+
 //LOGIN ROUTE
 
     Route::get('/login', 'LoginController@show')->name('login.show');
     Route::post('/login', 'LoginController@login')->name('login.perform');
+
+
 
     });
 
@@ -59,6 +66,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
     Route::get('/pending/delete/{id}', 'PendingController@deletetransaction')->name('pending.delete');
     Route::get('/pending/view/{id}', 'PendingController@viewlog')->name('pending.view');
     Route::post('/pending/edit/view', 'PendingController@viewlog')->name('pending.edit.view');
+    Route::post('/record-visit',[TrackingController::class, 'recordVisit']);
         
        
 

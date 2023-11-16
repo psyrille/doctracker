@@ -1,14 +1,138 @@
-   @extends('layouts.default')
+  @extends('layouts.default')
 
 @section('content')
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-      
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');body{background-color: #eeeeee;font-family: 'Open Sans',serif}.container{margin-top:50px;margin-bottom: 50px}.card{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.1);border-radius: 0.10rem}.card-header:first-child{border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0}.card-header{padding: 0.75rem 1.25rem;margin-bottom: 0;background-color: #fff;border-bottom: 1px solid rgba(0, 0, 0, 0.1)}.track{position: relative;background-color: #ddd;height: 7px;display: -webkit-box;display: -ms-flexbox;display: flex;margin-bottom: 60px;margin-top: 50px}.track .step{-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;width: 25%;margin-top: -18px;text-align: center;position: relative}.track .step.active:before{background: #FF5722}.track .step::before{height: 7px;position: absolute;content: "";width: 100%;left: 0;top: 18px}.track .step.active .icon{background: #ee5435;color: #fff}.track .icon{display: inline-block;width: 40px;height: 40px;line-height: 40px;position: relative;border-radius: 100%;background: #ddd}.track .step.active .text{font-weight: 400;color: #000}.track .text{display: block;margin-top: 7px}.itemside{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;width: 100%}.itemside .aside{position: relative;-ms-flex-negative: 0;flex-shrink: 0}.img-sm{width: 80px;height: 80px;padding: 7px}ul.row, ul.row-sm{list-style: none;padding: 0}.itemside .info{padding-left: 15px;padding-right: 7px}.itemside .title{display: block;margin-bottom: 5px;color: #212529}p{margin-top: 0;margin-bottom: 1rem}.btn-warning{color: #ffffff;background-color: #ee5435;border-color: #ee5435;border-radius: 1px}.btn-warning:hover{color: #ffffff;background-color: #ff2b00;border-color: #ff2b00;border-radius: 1px}
-
+    @import url('https://bootsnipp.com/snippets/4Mzzm');
+.tracking-detail {
+ padding:3rem 0
+}
+#tracking {
+ margin-bottom:1rem
+}
+[class*=tracking-status-] p {
+ margin:0;
+ font-size:1.1rem;
+ color:#fff;
+ text-transform:uppercase;
+ text-align:center
+}
+[class*=tracking-status-] {
+ padding:1.6rem 0
+}
+.tracking-status-intransit {
+ background-color:#65aee0
+}
+.tracking-status-outfordelivery {
+ background-color:#f5a551
+}
+.tracking-status-deliveryoffice {
+ background-color:#f7dc6f
+}
+.tracking-status-delivered {
+ background-color:#4cbb87
+}
+.tracking-status-attemptfail {
+ background-color:#b789c7
+}
+.tracking-status-error,.tracking-status-exception {
+ background-color:#d26759
+}
+.tracking-status-expired {
+ background-color:#616e7d
+}
+.tracking-status-pending {
+ background-color:#ccc
+}
+.tracking-status-inforeceived {
+ background-color:#214977
+}
+.tracking-list {
+ border:1px solid #e5e5e5
+}
+.tracking-item {
+ border-left:1px solid #e5e5e5;
+ position:relative;
+ padding:2rem 1.5rem .5rem 2.5rem;
+ font-size:.9rem;
+ margin-left:3rem;
+ min-height:5rem
+}
+.tracking-item:last-child {
+ padding-bottom:4rem
+}
+.tracking-item .tracking-date {
+ margin-bottom:.5rem
+}
+.tracking-item .tracking-date span {
+ color:#888;
+ font-size:85%;
+ padding-left:.4rem
+}
+.tracking-item .tracking-content {
+ padding:.5rem .8rem;
+ background-color:#f4f4f4;
+ border-radius:.5rem
+}
+.tracking-item .tracking-content span {
+ display:block;
+ color:#888;
+ font-size:85%
+}
+.tracking-item .tracking-icon {
+ line-height:2.6rem;
+ position:absolute;
+ left:-1.3rem;
+ width:2.6rem;
+ height:2.6rem;
+ text-align:center;
+ border-radius:50%;
+ font-size:1.1rem;
+ background-color:#fff;
+ color:#fff
+}
+.tracking-item .tracking-icon.status-sponsored {
+ background-color:#f68
+}
+.tracking-item .tracking-icon.status-delivered {
+ background-color:#4cbb87
+}
+.tracking-item .tracking-icon.status-outfordelivery {
+ background-color:#f5a551
+}
+.tracking-item .tracking-icon.status-deliveryoffice {
+ background-color:#f7dc6f
+}
+.tracking-item .tracking-icon.status-attemptfail {
+ background-color:#b789c7
+}
+.tracking-item .tracking-icon.status-exception {
+ background-color:#d26759
+}
+.tracking-item .tracking-icon.status-inforeceived {
+ background-color:#214977
+}
+.tracking-item .tracking-icon.status-intransit {
+ color:#e5e5e5;
+ border:1px solid #e5e5e5;
+ font-size:.6rem
+}
+@media(min-width:992px) {
+ .tracking-item {
+  margin-left:10rem
+ }
+ .tracking-item .tracking-date {
+  position:absolute;
+  left:-10rem;
+  width:7.5rem;
+  text-align:right
+ }
+ .tracking-item .tracking-date span {
+  display:block
+ }
+ .tracking-item .tracking-content {
 </style>
 <div class="content-header">
 
@@ -26,33 +150,57 @@
          </div>
       </div>
 
-         <div class="container">
-             @include('layouts.partials.messages')
-      <div class="row card p-5" style="background-color: white;">
-            <article class="card">
-                <header class="card-header">  <strong> MY TRACKING </strong> </header>
-                <div class="card-body">
-                    <article class="card">
+        <div class="col-md-12 col-lg-12">
+         <div id="tracking-pre"></div>
+         <div id="tracking">
+            <div class="text-center tracking-status-intransit">
+               <p class="tracking-status text-tight">MY TRACKING</p>
+            </div>
+             <article class="card">
                         <div class="card-body row">
-                            <div class="col"> <strong>Transaction Code:</strong> <br>{{ $transaction->transaction_code}}</div>
-                            <div class="col"> <strong>Title</strong> <br>{{ $transaction->title}} </div>
-                            <div class="col"> <strong>Fullname</strong> <br>{{ $transaction->fullname}}</div>
-                            <div class="col"> <strong>Contact</strong> <br>{{ $transaction->contact_number}} | <i class="fa fa-phone"></i> {{ $transaction->email_address}} </div>
+                            <div class="col"> <strong>Transaction Code:</strong> <br>{{ $transaction_details->transaction_code}}</div>
+                            <div class="col"> <strong>Title</strong> <br>{{ $transaction_details->title}} </div>
+                            <div class="col"> <strong>Fullname</strong> <br>{{ $transaction_details->fullname}}</div>
+                            <div class="col"> <strong>Contact</strong> <br>{{ $transaction_details->contact_number}} | <i class="fa fa-phone"></i> {{ $transaction_details->email_address}} </div>
                         </div>
                     </article>
+            <div class="tracking-list">
+                <div class="tracking-item">
+                  <div class="tracking-icon status-intransit">
+                     <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                     </svg>
+                     <!-- <i class="fas fa-circle"></i> -->
+                </div>      
                     <div class="track">
-                        @if($transaction=\App\Models::where('transaction_id', $transaction->id)->get())
-                            @foreach($transaction as $transaction)
-                                <div class="step active"> 
-                                    <span class="icon"> <i class="fa fa-check"></i></span> 
-                                    <span class="text">{{$transaction->title}}</span> 
-                                    <span class="text">{{$transaction->short_description}}</span> 
-                                </div>
-                            @endforeach
-                        @endif
-                    </div>
+                    @if(isset($transactions))
+                    @foreach($transactions as $transaction)
+                        <div class="tracking-date"></div>
+                        <div class="tracking-content">
+                    @if($transaction->last_visited_at)
+                        {{$transaction->destinations->fullname}}-{{$transaction->destinations->department}}
+                            <span class="tracking-content">{{$transaction->short_description}}</span>
+                                <form action="{{ route('updateTracking', ['id' => $transaction->id]) }}" method="post">
+                        @csrf
+                        @method('PATCH')
+                                <button type="submit">Update Location</button>
+                                </form>
+                        @else
+                    {{$transaction->destinations->fullname}}-{{$transaction->destinations->department}}
+                    <span class="tracking-content">{{$transaction->short_description}}</span>
+                @endif
+            </div>
+        </div>
+   
+</div>
+
+                </div>
+        @endforeach
+    @endif
+</div>
+
                     <hr>
-                   
+                    
                     <hr>
                     <a href="{{ route('transaction.pending') }}" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back </a>
                 </div>

@@ -11,4 +11,7 @@ class Transaction extends Model
     public function destinations(){
     	return $this->belongsTo('\App\Models\Employee','destination','id');
     }
+    public function department(){
+        return $this->belongsTo('\App\Models\Employee','destination','id','last_visited_at');
+    }
 }

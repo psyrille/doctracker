@@ -23,6 +23,7 @@ return new class extends Migration
                $table->text('purpose');
                $table->text('short_description');
                $table->timestamps();
+
         });
     }
 

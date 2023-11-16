@@ -35,6 +35,13 @@
                          <!-- <button type="submit" class="btn btn-info btn-block" style="background-color: #aa8800;" style="color: White ">Sign Up</button> -->
                      </div>
                   </div>
+                  <div class="row">
+                     <div class="col-6 offset-lg-3">
+                        <center>
+                         <button type="submit" class="btn btn-info btn-block" style="background-color: #aa8800;" style="color: white">Register Employee</button>
+                         <!-- <button type="submit" class="btn btn-info btn-block" style="background-color: #aa8800;" style="color: White ">Sign Up</button> -->
+                     </div>
+                  </div>
 
             </div>
             <!-- /.card-body -->

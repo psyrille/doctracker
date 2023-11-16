@@ -11,15 +11,20 @@ use Auth;
 class UserPendingController extends Controller
 {
      public function userpendingtransaction(Request $request){
-        $user_transactions=User_transaction::orderby('created_at','desc')
-                                            ->with('destinations')
-                                            ->where('destination',Auth::user()->id)
-                                            ->paginate(10);
 
-        
+        $userId = Auth::id();
 
+    // Kuhaa ang mga transactions nga ang destination kay ang ID sa aktibong user
+    $transactions = User_transaction::where('destination', $userId)->get();
+
+    // I-display o gamita ang mga transactions
+   
+      
         return view('User.Transaction.pending',[
-              'transactions'=>$user_transactions
-        ]);
+              'transactions'=>$transactions
+            ]);
+         
     }
 }
+
+

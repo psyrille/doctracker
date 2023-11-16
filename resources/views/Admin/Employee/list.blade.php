@@ -48,7 +48,6 @@
                            <tr>
                               <th>Full Name</th>
                               <th>Password</th>
-                              <th>Device id</th>
                               <th>Position</th>
                               <th>Department</th>
                               <th class="text-center">Action</th>
@@ -60,7 +59,6 @@
                            <tr>
                               <td>{{$employee->fullname}}</td>
                               <td>{{$employee->password}}</td>
-                              <td>{{$employee->device_id}}</td>
                               <td>{{$employee->position}}</td>
                               <td>
                                  {{$employee->department}}

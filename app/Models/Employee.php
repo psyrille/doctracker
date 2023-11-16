@@ -12,7 +12,6 @@ class Employee extends Model
     public function position(){
     	return $this->belongsTo('\App\Models\Employee','position','id');
     }
-    use HasFactory;
   
     public function department(){
     	return $this->belongsTo('\App\Models\Employee','department','id');

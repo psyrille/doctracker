@@ -34,13 +34,6 @@
                                  <input type="text" name="password" class="form-control"  placeholder="Enter password" >
                               </div>
                            </div>
-                           <div class="col-md-4">
-                              <div class="form-group">
-                                 <label>Device id</label>
-                                 <input type="text" name="device id" class="form-control" placeholder="Enter device">
-                              </div>
-                           </div>
-
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Position </label>
