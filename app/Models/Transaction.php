@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    use HasFactory;
-    public function destinations(){
-    	return $this->belongsTo('\App\Models\Employee','destination','id');
-    }
-    public function department(){
-        return $this->belongsTo('\App\Models\Employee','destination','id','last_visited_at');
-    }
+    protected $fillable = [
+        'id','transaction_code','fullname','contact_number', 'email_address', 'address', 'title', 'destination', 'purpose', 'short_description', 'last_visited_at', 'status', 'created_at', 'updated_at'
+    ];
 }

@@ -3,6 +3,7 @@
 
 <head>
    <meta charset="utf-8">
+   <meta name="csrf-token" content="{{ csrf_token() }}">
    <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Document-Tracking-System</title>
    <!-- Font Awesome -->
@@ -33,6 +34,10 @@
                <li class="nav-item">
                   <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color: white;"></i></a>
                </li>
+
+               <li class="nav-item">
+                  <h5 class="fw-bold">{{ Str::title(Auth::user()->name) }}</h5>
+               </li>
          </ul>
          <ul class="navbar-nav ml-auto">
                <li class="nav-item">
@@ -44,12 +49,7 @@
                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                   <i class="fas fa-expand-arrows-alt" style="color: white;"></i>
                </a>
-            </li>
-               <!-- <li class="nav-item">
-                  <a class="nav-link" href="{{ route ('logout.perform')}}">
-                     <i class="fas fa-sign-out-alt"style="color: white;"></i>
-                  </a>
-               </li>  -->      
+            </li> 
          </nav>
       <aside class="main-sidebar sidebar-light-primary" style="background-color: black;">
             <!-- Brand Logo -->
@@ -79,13 +79,13 @@
                      </a>
                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                     <a href="{{ route('transaction.user') }}" class="nav-link">
+                     <a href="{{ route('pending.user') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
                         <p style="color: white;">Pending </p>
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a href="{{ route('transaction.approved') }}" class="nav-link">
+                     <a href="{{ route('approved.user') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
                         <p style="color: white;">Approved</p>
                      </a>

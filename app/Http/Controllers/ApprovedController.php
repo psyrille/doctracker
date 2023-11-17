@@ -7,19 +7,19 @@ use App\Models\Approved;
 
 class ApprovedController extends Controller
 {
-    public function status()
+    public function index()
     {
-        $approved = Approved::all();
+        $approved_transactions = Approved::all();
 
-        return view('Admin.Transaction.approved', compact('approved'));
+        return view('Admin.Transaction.approved', compact('approved_transactions'));
     }
 
-    public function status(Approved $approved)
+    public function statuss(Approved $approved)
     {
         $approved->update(['status' => 'approved']);
 
         // You can add further logic here (e.g., send notifications)
 
-        return redirect()->route('approved.status')->with('success', 'Post approved successfully.');
+        return redirect()->route('approved.status   ')->with('success', 'Post approved successfully.');
     }
 }

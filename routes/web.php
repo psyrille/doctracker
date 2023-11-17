@@ -1,5 +1,6 @@
   <?php
 
+use App\Http\Controllers\User\UserPendingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::group(['namespace' => 'App\Http\Controllers'], function()
     {   
             Route::get('/', function () {
@@ -24,7 +27,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 Route::group(['middleware' => ['guest']], function() {
            
     Route::get('/register', 'RegisterController@show')->name('register.show');
-    Route::post('/register', 'RegisterController@register')->name('register.perform');
+    Route::post('/registerUser', 'RegisterController@register')->name('register.perform');
 
 //REGISTER USER ROUTE
     Route::get('/registration', 'RegistrationController@show')->name('registration.show');
@@ -82,8 +85,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
 
     });
 //APPROVED ROUTES
-    Route::get('/approved', [ApprovedController::class, 'status'])->name('approved.status');
-    Route::put('/approved/{}/status', [ApprovedController::class, 'status'])->name('approved.status');
+    Route::get('/approved', [ApprovedController::class, 'index'])->name('approved.status');
+    
 
 #USERS
 
@@ -96,18 +99,22 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
 
 
 //TRANSACTIONS
+    
+    Route::get('/transaction/pending', 'User\UserPendingController@userpendingtransaction')->name('pending.user');
+    Route::get('/transaction/approved', 'User\UserApprovedController@approved')->name('approved.user');
 
-    Route::get('/transaction/pending', 'User\UserPendingController@userpendingtransaction')->name('transaction.user');
 
 //LOGS
 
     Route::get('/log/document', 'User\UserLogController@userdocumentlog')->name('log.user');
-           
 
-           
-
-    });          
+    });  
+    
 });
+
+//USER TRANSACTION
+$controller_path = 'App\Http\Controllers';
+Route::post('user/approveTransaction', $controller_path . '\User\UserPendingController@approveTransaction');
 
     
 

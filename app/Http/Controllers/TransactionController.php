@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Transaction;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Transaction;
+use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
     public function newtransaction(){
-        return view('Admin.Transaction.new');
+        $users = User::select('*')->get();
+        return view('Admin.Transaction.new', compact('users'));
     }
+
     public function storetransaction(Request $request){
         $Transactionsave= new Transaction();
 
@@ -36,6 +39,7 @@ class TransactionController extends Controller
         $Transactionsave->destination = $request->destination;
         $Transactionsave->purpose = $request->purpose;
         $Transactionsave->short_description = $request->short_description;
+        $Transactionsave->status = "pending";
 
         if($Transactionsave->save()) {
              return redirect()->back()->withErrors('Successfully Saved!');

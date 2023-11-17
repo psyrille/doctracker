@@ -12,6 +12,7 @@
       <link rel="stylesheet" href="asset/fontawesome/css/all.min.css">
       <!-- Theme style -->
       <link rel="stylesheet" href="asset/css/adminlte.min.css">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
    </head>
    
    <h1 style="color: #FFFFFF; text-shadow: #D4AF37;" > <B>Document Tracking System </B></h1>

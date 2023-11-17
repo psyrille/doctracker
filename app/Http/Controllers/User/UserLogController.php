@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\Log;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserLogController extends Controller
 {

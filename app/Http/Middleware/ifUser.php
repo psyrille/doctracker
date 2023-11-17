@@ -3,10 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\User_role;
-use Auth;
 
 class ifUser
 {
@@ -17,21 +18,15 @@ class ifUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $role = User_role::where('userid', Auth::user()->id)->first();
-         if ($role && $role->roleid == 2) {
-            return $next($request);
-        
-        $user->employees()->create([
-            'employee_fullname' => $data['employee_fullname'],
-            'employee_password' => $data['employee_password'],
-            'employee_position' => $data['employee_position'],
-            'employee_department' => $data['employee_department'],
-          
-             
-             
-        ]);
-    }
-}
+        $select = User::select('type')->where('id', Auth::id())->first();
+        if($select->type==null){
+            return('/login');
+        }
+        if ($select->type !== 'user') {
+            abort(403, 'Unauthorized action.');
+        }
+        return $next($request);
+}   
 
  
 }

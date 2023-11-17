@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\User_role;
-use Auth;
 
 
 class ifAdmin
@@ -18,7 +18,7 @@ class ifAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-    	$role = User_role::where('userid', Auth::user()->id)->first();
+    	$role = UserRole::where('userid', Auth::user()->id)->first();
     	if(Auth::user()&&$role->roleid==0){
     		 return $next($request);
     	}

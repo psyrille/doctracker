@@ -3,6 +3,7 @@
 
 <head>
    <meta charset="utf-8">
+   <meta name="csrf-token" content="{{ csrf_token() }}" />
    <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Document-Tracking-System</title>
    <!-- Font Awesome -->
@@ -91,7 +92,7 @@
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a href="{{ route('transaction.approved') }}" class="nav-link">
+                     <a href="{{ route('approved.status') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>
                         <p style="color: white;">Approved</p>
                      </a>

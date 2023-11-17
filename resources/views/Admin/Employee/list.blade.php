@@ -74,8 +74,9 @@
                                        class="fa fa-delete"></i> Delete</a>
                                        {{method_field('DELETE')}}
                                         @csrf
-
                               </td>
+
+                              
                            </tr>
                            @endforeach
                            <tr>

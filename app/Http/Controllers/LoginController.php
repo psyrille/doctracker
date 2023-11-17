@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
@@ -31,9 +33,10 @@ class LoginController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
+
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            $role = User_role::where('userid',Auth::user()->id)->first();
+            $role = UserRole::where('userid',Auth::user()->id)->first();
             if (Auth::user() && $role->roleid==0){
                  return redirect('/admin');
             }elseif(Auth::user() && $role->roleid==2){

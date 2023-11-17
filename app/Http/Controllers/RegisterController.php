@@ -2,9 +2,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\User_role; // Don't forget to import the User_role model if you haven't already
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use App\Models\User_role; // Don't forget to import the User_role model if you haven't already
+use Exception;
 
 class RegisterController extends Controller
 {
@@ -25,26 +28,29 @@ class RegisterController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function register(RegisterRequest $request) 
+    public function register(Request $request) 
     {
-        // return $request->type;
-        $user = User::create($request->validated());
+        $data = [
+            'position' => $request->position,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'updated_at' => Carbon::now(),
+            'department' =>$request->department,
+            'type' => 'user'
+        ];
 
-        if ($user) {
-            $saveUser_role = new User_role;
-            $saveUser_role->userid = $user->id;
-            $saveUser_role->roleid = $request->type;
-            if ($request->type == 0) {
-                $saveUser_role->role_name = "Admin";
-            } elseif ($request->type == 2) {
-                $saveUser_role->role_name = "User";
-            }
-
-            if ($saveUser_role->save()) {
-                return redirect()->back()->with('success', 'New user has been created successfully.');
-            }
+        try{
+            User::insert($data);
+            return response()->json([
+                'status_code' => 1
+            ]);
+        }
+        catch(Exception $e){
+            return response()->json([
+                'status_code' => 0
+            ]);
         }
 
-        return redirect()->back()->withErrors('Error', 'Something went wrong while creating the user.');
     }
 }

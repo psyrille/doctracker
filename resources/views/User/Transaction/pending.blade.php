@@ -1,6 +1,7 @@
- @extends('layouts.user.default')
+@extends('layouts.user.default')
 
 @section('content')
+
 <div class="content-header">
       <div class="container-fluid">
          <div class="row mb-2">
@@ -17,8 +18,6 @@
       </div>
    @include('layouts.partials.messages')
       <div class="row card p-5" style="background-color: white;">
-         <form action="{{ route('transaction.user') }}"  method="post">
-            @csrf
       <div class="row card p-7">
             <div class="col-md-12">
                <div class="card-header">
@@ -45,7 +44,9 @@
                </ol>
                   <br>
                   <div class="col-md-12">
-                     <table id="example1" class="table table-hover">
+                     <div class="table-responsive">
+                        
+                     <table id="example1" class="table table-hover" style="text-align: center">
                         <thead>
                            <tr>
                               <th>Transaction Code</th>
@@ -54,49 +55,39 @@
                               <th>Email Address</th>
                               <th>Address</th>
                               <th>Title</th>
-                              <th>Destination</th> 
                               <th>Purpose</th>
                               <th>Short Description</th>
-                              <th class="text-center">Action</th>
+                              <th colspan="3">Action</th>
+                              <th><button class="btn btn-sm btn-success" id="btn-approve">Approve</button></th>
                            </tr>
 
                         </thead>
                         <tbody>
                           @foreach($transactions as $transaction)
-                           <tr>
+                          <tr class="table-row">
                               <td>{{$transaction->transaction_code}}</td>
                               <td>{{$transaction->fullname}}</td>
                               <td>{{$transaction->contact_number}}</td>
                               <td>{{$transaction->email_address}}</td>
                               <td>{{$transaction->address}}</td>
                               <td>{{$transaction->title}}</td>
-                              <td>
-                                 <!-- {{$transaction->department}} -->
-                                 @if(isset($transaction->destinations->fullname))
-                                    {{$transaction->destinations->fullname}}-{{$transaction->destinations->department}}
-                                 @endif
-                              </td>  
                               <td>{{$transaction->purpose}}</td>
                               <td>{{$transaction->short_description}}</td>
                               <td class="text-center">
-                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/edit/update/').'/'.$transaction->id }}"><i
-                                       class="fa fa-edit"></i> Update</a>      
-                                      
-                                 <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
-                                       class="fa fa-delete"> </i> Delete</a>
+                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/edit/update/').'/'.$transaction->id }}">Update</a>      
 
-                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/view/').'/'.$transaction->id }}"><i
-                                       class="fa fa-delete"> </i> View</a>
-
-
-                                                          
                               </td>
+                              <td><a class="btn btn-sm btn-success" href="{{ url('/pending/view/').'/'.$transaction->id }}">View</a></td>
+                              <td>
+                                 <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}">Delete</a>
+                              </td>
+                              <td style="text-align: center"><input type="checkbox" name="" class="form-check-input approve-checbox" sid='{{ $transaction->id }}'></td>
                            </tr>
                            @endforeach
-                           <tr>
-                           </tr>
                         </tbody>
                      </table>
+                  
+                     </div>
                   </div>
                </div>
             </div>
@@ -107,7 +98,45 @@
       </div>  
 
 </div>
+<script src="{{ asset('asset/jquery/jquery.min.js') }}"></script>
+<script>
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+    
+   $('#btn-approve').click(function (e) { 
+      e.preventDefault();
+
+      $('input[type=checkbox]').each(function () {
+         let sid = $(this).attr('sid');
+         let el = this;
+
+         
+
+         $.ajax({
+         type: "POST",
+         url: "/user/approveTransaction",
+         data: {
+            'id': sid,
+            '_token': "{{ csrf_token() }}"
+         },
+         success: function (response) {
+            if(response.status_code == 1){
+               $(el).closest('.table-row').fadeOut(300,function(){
+                  $(this).remove()
+               })
+            }
+         }
+         });
+      });
+      
+      
+      
+      
+   });
+</script>
       
 @endsection
 
-            

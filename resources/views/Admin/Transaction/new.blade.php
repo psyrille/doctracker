@@ -58,11 +58,9 @@
                                 <label> Destination</label>
                                 <select name="destination" class="form-control">
                                   <option value="" readonly>Select Destination</option>
-                                  @if($employees=App\Models\Employee::get())
-                                    @foreach($employees as $employee)
-                                      <option value="{{ $employee->id}}">{{ $employee->fullname }} -{{ $employee->department }}</option>
-                                    @endforeach
-                                  @endif
+                                  @foreach ($users as $user)
+                                     <option value="{{ $user->id }}">{{ $user->name }}</option> 
+                                  @endforeach
                                 </select>
                               </div>
                            </div>
