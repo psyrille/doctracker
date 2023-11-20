@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TrackingLog extends Model
 {
-    use HasFactory;
-    $log -> new TrackingLog();
-    $log->message = 'Some activity message';
-    $log->user_id = auth()->id;
-    $log->save();
+    protected $table = 'tracking_logs';
+    protected $fillable = [
+        'id', 'transaction_id', 'from_id', 'to_id', 'title', 'short_description', 'department', 'updated_at'
+    ];
 }

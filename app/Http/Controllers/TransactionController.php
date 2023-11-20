@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\TrackingLog;
 use App\Models\Transaction;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -40,9 +44,25 @@ class TransactionController extends Controller
         $Transactionsave->purpose = $request->purpose;
         $Transactionsave->short_description = $request->short_description;
         $Transactionsave->status = "pending";
+        
+
+        $Transactionsave->save();
+        
+        
 
         if($Transactionsave->save()) {
-             return redirect()->back()->withErrors('Successfully Saved!');
+            $id = Transaction::select('id')->where('transaction_code', $temptrans)->first();
+            $to = User::select('name','department')->where('id', $request->destination)->first();
+            TrackingLog::insert(array(
+                'transaction_id' => $id->id,
+                'from_id' => Auth::id(),
+                'to_id' => $request->destination,
+                'title' => 'New Transaction',
+                'short_description' => Str::title(Auth::user()->name). ' created a transaction and was sent to '. Str::title($to->name),
+                'department' => $to->department,
+                'updated_at' => Carbon::now()
+            ));
+            return redirect()->back()->withErrors('Successfully Saved!');
         }
     }
 }

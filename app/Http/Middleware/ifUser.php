@@ -19,8 +19,8 @@ class ifUser
     public function handle(Request $request, Closure $next): Response
     {
         $select = User::select('type')->where('id', Auth::id())->first();
-        if($select->type==null){
-            return('/login');
+        if(!Auth::check()){
+            return(redirect('/login'));
         }
         if ($select->type !== 'user') {
             abort(403, 'Unauthorized action.');

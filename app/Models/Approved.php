@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Approved extends Model
 {
-    use HasFactory;
+    protected $table = 'approved';
     protected $fillable = [
-        'title',
-        'content',
-        'status',
+        'id',
+        'transaction_id',
+        'from_id'
     ];
 }

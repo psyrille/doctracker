@@ -67,6 +67,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
     Route::get('/pending/edit/{id}', 'PendingController@edittransaction')->name('pending.edit');
     Route::post('/pending/edit/update', 'PendingController@updatetransaction')->name('pending.edit.update');
     Route::get('/pending/delete/{id}', 'PendingController@deletetransaction')->name('pending.delete');
+
+
     Route::get('/pending/view/{id}', 'PendingController@viewlog')->name('pending.view');
     Route::post('/pending/edit/view', 'PendingController@viewlog')->name('pending.edit.view');
     Route::post('/record-visit',[TrackingController::class, 'recordVisit']);
@@ -106,15 +108,23 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
 
 //LOGS
 
-    Route::get('/log/document', 'User\UserLogController@userdocumentlog')->name('log.user');
+    
 
     });  
     
 });
 
 //USER TRANSACTION
-$controller_path = 'App\Http\Controllers';
-Route::post('user/approveTransaction', $controller_path . '\User\UserPendingController@approveTransaction');
+
+Route::group(['middleware' => ['user']], function() {
+    $controller_path = 'App\Http\Controllers';
+    Route::post('transactions/approve', $controller_path . '\User\UserPendingController@approveTransaction')->name('user.approveTransaction');
+    Route::get('/log/document', $controller_path .'\User\UserLogController@userdocumentlog')->name('user.log.document');
+
+    Route::post('user/searchTransaction', $controller_path . '\User\UserLogController@userSearchTransaction')->name('search.transaction');
+    Route::get('/user/transactionLogs/{id}', $controller_path. '\LogController@userViewLog')->name('user.view.log');
+});  
+
 
     
 

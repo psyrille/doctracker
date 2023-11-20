@@ -5,7 +5,7 @@
       <div class="container-fluid">
          <div class="row mb-2">
       <div class="col-sm-6">
-         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;"> Pending Transaction</h1>
+         <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40" style="border-radius: 100px;"> Approved Transaction</h1>
          </div>
             <div class="col-sm-6">
               <!--  <ol class="breadcrumb float-sm-right">
@@ -55,6 +55,7 @@
                               <th>Address</th>
                               <th>Title</th>
                               <th>Purpose</th>
+                              <th>Destination</th>
                               <th>Short Description</th>
                               <th class="text-center" colspan="3">Action</th>
                            </tr>
@@ -69,17 +70,12 @@
                               <td>{{$transaction->email_address}}</td>
                               <td>{{$transaction->address}}</td>
                               <td>{{$transaction->title}}</td>
+
                               <td>{{$transaction->purpose}}</td>
+                              <td>{{ $transaction->u_name }}</td>
                               <td>{{$transaction->short_description}}</td>
                               <td class="text-center">
-                               
-                               
-
-                                 <a class="btn btn-sm btn-success" href="{{ url('/pending/view/').'/'.$transaction->id }}"><i
-                                       class="fa fa-delete"> </i> View</a>
-
-
-                                                          
+                                 <a class="btn btn-sm btn-success" href="{{ url('user/transactionLogs/').'/'.$transaction->id }}">View</a>                
                               </td>
                                 <td>
                                  <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i

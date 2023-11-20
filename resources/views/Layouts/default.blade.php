@@ -178,6 +178,7 @@
    <script src="{{asset('/asset/tables/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
    <script src="{{asset('/asset/tables/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
    <script src="{{asset('/asset/tables/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+   
    <script>
       $(function () {
          $("#example1").DataTable();
