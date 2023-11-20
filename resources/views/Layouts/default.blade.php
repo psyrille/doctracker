@@ -85,18 +85,6 @@
                         <p style="color: white;"> New </p>
                      </a>
                   </li>
-                  <li class="nav-item">
-                     <a href="{{ route('transaction.pending') }}" class="nav-link">
-                        <i class="nav-icon far fa-circle" style="color: white;"></i>
-                        <p style="color: white;">Pending </p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="{{ route('approved.status') }}" class="nav-link">
-                        <i class="nav-icon far fa-circle" style="color: white;"></i>
-                        <p style="color: white;">Approved</p>
-                     </a>
-                  </li>
                </ul>
                   </li>
                   <li class="nav-item">
@@ -108,12 +96,6 @@
                         <i class="right fas fa-angle-left" style="color: white;"></i>
                      </a>
                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                     <a href="{{ route('employee.new') }}" class="nav-link">
-                        <i class="nav-icon far fa-circle" style="color: white;"></i>
-                        <p style="color: white;"> New </p>
-                     </a>
-                  </li>
                   <li class="nav-item">
                      <a href="{{ route('employee.list') }}" class="nav-link">
                         <i class="nav-icon far fa-circle" style="color: white;"></i>

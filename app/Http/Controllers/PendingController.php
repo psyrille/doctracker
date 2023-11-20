@@ -62,7 +62,11 @@ class PendingController extends Controller
     }
 
 
-    
+    public function viewPending(){
+        $pendings = Transaction::select('*')->where('status', 'pending')->get();
+
+        return view('Admin.Dashboard.view-pending', compact('pendings'));
+    }
 
 }
 

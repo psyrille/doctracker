@@ -78,8 +78,7 @@
                                  <a class="btn btn-sm btn-success" href="{{ url('user/transactionLogs/').'/'.$transaction->id }}">View</a>                
                               </td>
                                 <td>
-                                 <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}"><i
-                                    class="fa fa-delete"> </i> Delete</a>
+                                 <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}">Delete</a>
                                 </td>
                            </tr>
                            @endforeach

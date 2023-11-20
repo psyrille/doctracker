@@ -26,7 +26,7 @@
                               <div class="form-group">
                                  <label>Full Name </label>
                                  <input type="hidden" name="id" value="{{$employee->id}}">
-                                 <input type="text" name="fullname" value="{{$employee->fullname}}" class="form-control" placeholder="Enter Full Name">
+                                 <input type="text" name="fullname" value="{{$employee->name}}" class="form-control" placeholder="Enter Full Name">
                               </div>
                            </div>
                            <div class="col-md-3">
@@ -35,10 +35,10 @@
                                  <input type="text" name="password"  class="form-control" placeholder="Enter Password">
                               </div>
                            </div>
-                           <div class="col-md-4">
+                           <div class="col-md-3">
                               <div class="form-group">
-                                 <label>Device id</label>
-                                 <input type="text" name="device_id" value="{{$employee->device_id}}" class="form-control" placeholder="Enter Device id">
+                                 <label>Email</label>
+                                 <input type="text" name="email" value="{{ $employee->email }}" class="form-control" placeholder="Enter Password">
                               </div>
                            </div>
 
@@ -51,26 +51,20 @@
                            <div class="col-md-12">
                               <div class="form-group">
                                 <label> Department </label>
-                                <textarea class="form-control" name="department"  placeholder="Enter department"> </textarea>
-                                    @if($employees=App\Models\Employee::get())
-                                    @foreach($employees as $employee)
-                                      @if($employee->id == $employee->department)
-                                      @endif
-                                  <!--     <option></option>
-                                          <option>SB Office</option>
-                                          <option>Budget</option>
-                                          <option>Accounting</option>
-                                          <option>Treasurer</option>
-                                          <option>MPDC</option>
-                                          <option>Engineering</option>
-                                          <option>MAGSO</option>
-                                          <option>MSWDO</option>
-                                          <option>Assessor Office</option>
-                                          <option>Civil Registrar Office</option>
-                                          <option>GSO Office</option>
-                                          <option>Mayors Office</option> -->
-                                    @endforeach
-                                  @endif
+                                <select class="form-control" name="department" id="department">
+                                 <option value="{{ $employee->position }}">{{ $employee->department }}</option>
+                                 <option value="Sangguniang Bayan Office">Sangguniang Bayan Office</option>
+                                 <option value="Municipal Planning & Development Office">Municipal Planning & Development Office</option>
+                                 <option value="Municipal Local Civil Registrar">Municipal Local Civil Registrar</option>
+                                 <option value="Municipal Budget Office">Municipal Budget Office</option>
+                                 <option value="Municipal Accounting Office">Municipal Accounting Office</option>
+                                 <option value="Municipal Treasurer Office">Municipal Treasurer Office</option>
+                                 <option value="Municipal Assessor's Office">Municipal Assessor's Office</option>
+                                 <option value="Municipal Health Office">Municipal Health Office</option>
+                                 <option value="Municipal Social Welfare & Development Office">Municipal Social Welfare & Development Office</option>
+                                 <option value="Municipal Agriculture Office">Municipal Agriculture Office</option>
+                                 <option value="Municipal Engineering Office">Municipal Engineering Office</option>
+                                </select>
                              
                               </div>
                            </div>             

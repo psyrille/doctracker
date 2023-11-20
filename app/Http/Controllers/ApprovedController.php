@@ -22,4 +22,14 @@ class ApprovedController extends Controller
 
         return redirect()->route('approved.status   ')->with('success', 'Post approved successfully.');
     }
+
+    public function viewApproved(){
+      
+        $approved = Approved::select('*')
+        ->join('transactions', 'transactions.id', '=', 'approved.transaction_id')
+        ->get();
+
+        return view('Admin.Dashboard.view-approved', compact('approved'));
+       
+    }
 }

@@ -26,6 +26,16 @@ class LogController extends Controller
 
       return view('User.Log.view-log', compact('transactions'));
   }
+
+  public function adminViewLog($id){
+      $transactions =TrackingLog::select('tracking_logs.title', 'tracking_logs.short_description', 'tracking_logs.department','tracking_logs.updated_at')
+      ->where('transaction_id',$id)
+      ->join('transactions', 'transactions.id', '=', 'tracking_logs.transaction_id')
+      ->get();
+      
+
+      return view('Admin.Log.view-log', compact('transactions'));
+  }
      
     
 }

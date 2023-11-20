@@ -34,7 +34,7 @@
                      </div>
                   </div>
                   <div class="col-12 col-sm-8 col-md-8 offset-sm-2 offset-md-2 offset-lg-2">
-                     <div class="info-box">
+                     <div class="info-box d-flex align-items-center">
                         <span class="info-box-icon text-info"><img src="../asset/img/files-icon.jpg" width="50"></span>
 
                         <div class="info-box-content">
@@ -49,10 +49,11 @@
                               @endif
                            </span>
                         </div>
+                        <a href="{{ route('admin.view.pending') }}"><button class="btn btn-primary">View</button></a>
                      </div>
                   </div>
                   <div class="col-12 col-sm-8 col-md-8 offset-sm-2 offset-md-2 offset-lg-2">
-                     <div class="info-box">
+                     <div class="info-box d-flex align-items-center">
                         <span class="info-box-icon text-info"><img src="../asset/img/files-icon.jpg" width="50"></span>
 
                         <div class="info-box-content">
@@ -60,12 +61,13 @@
                               <h5>Number of Approved Files</h5>
                            </span>
                            <span class="info-box-number">
-                                @if($nOusers=App\Models\User::count())
+                                @if($nOusers=App\Models\Approved::count())
                                  <h2>{{$nOusers}}</h2>
                                 @endif
                            
                            </span>
                         </div>
+                        <a href="{{ route('admin.view.approved') }}"><button class="btn btn-primary">View</button></a>
                      </div>
                   </div>
 

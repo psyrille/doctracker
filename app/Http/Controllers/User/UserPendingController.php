@@ -35,7 +35,7 @@ class UserPendingController extends Controller
     }
 
     public function approveTransaction(Request $request){
-      $id = $request->id;
+        $id = $request->id;
 
       
         Transaction::where('id',$id)->update(array(
@@ -43,8 +43,9 @@ class UserPendingController extends Controller
         ));
 
         Approved::insert(array(
-          'transaction_id' => $id,
-          'from_id' => Auth::id()
+          'transaction_id' => $id,  
+          'from_id' => Auth::id(),
+          'to_id' => $request->to_destination,
         ));
 
         TrackingLog::insert(array(

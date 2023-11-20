@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Employee;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 // use App\Models\Position;
 // use App\Models\Department;
@@ -14,8 +15,9 @@ class EmployeeController extends Controller
     public function newemployee(){
         return view('Admin.Employee.new');
     }
-     public function editemployee(Request $request){
-        $employee=Employee::where('id',$request->id)->first();
+     public function editemployee($id){
+        dd($id);
+        $employee = User::where('id',$id)->first();
 
         return view('Admin.Employee.update',[
               'employee'=>$employee

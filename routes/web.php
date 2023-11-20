@@ -85,9 +85,15 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
     Route::post('/list/edit/update', 'ListController@updatelist')->name('list.edit.update');   
     Route::get('/list/delete/{id}', 'ListController@deletelist')->name('list.delete');
 
+    Route::get('/transactionLogs/{id}', 'LogController@adminViewLog')->name('view.log');
+
     });
 //APPROVED ROUTES
     Route::get('/approved', [ApprovedController::class, 'index'])->name('approved.status');
+
+//VIEW PENDING
+    Route::get('/viewPending', 'PendingController@viewPending')->name('admin.view.pending');
+    Route::get('/viewApproved', 'ApprovedController@viewApproved')->name('admin.view.approved');
     
 
 #USERS
@@ -107,7 +113,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
 
 
 //LOGS
-
+    
     
 
     });  

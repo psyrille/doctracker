@@ -9,7 +9,7 @@
          </div>
             <div class="col-sm-6">
               <!--  <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#" style="color: white;">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#" style="color: white;">Home</a></   li>
                   <li class="breadcrumb-item active" style="color: white;">Dashboard</li>
                </ol> -->
             </div>
@@ -47,7 +47,6 @@
                         <thead>
                            <tr>
                               <th>Full Name</th>
-                              <th>Password</th>
                               <th>Position</th>
                               <th>Department</th>
                               <th class="text-center">Action</th>
@@ -57,15 +56,9 @@
                         <tbody>
                           @foreach($employees as $employee)
                            <tr>
-                              <td>{{$employee->fullname}}</td>
-                              <td>{{$employee->password}}</td>
+                              <td>{{$employee->name}}</td>
                               <td>{{$employee->position}}</td>
-                              <td>
-                                 {{$employee->department}}
-                                 @if(isset($employee->departments->fullname))
-                                    {{$employee->departments->fullname}}-{{$employee->departments->department}}
-                                 @endif
-                              </td>  
+                              <td>{{$employee->department }}</td>  
                              
                               <td class="text-center">
                                  <a class="btn btn-sm btn-success" href="{{ url('admin/list/edit/').'/'.$employee->id }}"><i
