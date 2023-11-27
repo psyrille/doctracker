@@ -17,7 +17,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0"><img src="{{ asset('/asset/img/form-icon.jpg') }}" width="40"
-                            style="border-radius: 100px;"> Approved Transaction</h1>
+                            style="border-radius: 100px;"> Rejected Transaction</h1>
                 </div>
                 <div class="col-sm-6">
                     <!--  <ol class="breadcrumb float-sm-right">
@@ -42,39 +42,38 @@
                                         <table class="table table-hover mb-2" id="example1" style="text-align: center; ">
                                             <thead>
                                                 <tr>
-                                                    <th>Transaction Code</th>
-                                                    <th>Full Name</th>
-                                                    <th>Contact Number</th>
-                                                    <th>Email Address</th>
-                                                    <th>Address</th>
-                                                    <th>Title</th>
-                                                    <th>Purpose</th>
-                                                    <th>Destination</th>
-                                                    <th>Short Description</th>
-                                                    <th>Action</th>
+                                                   <th>Transaction Code</th>
+                                                   <th>Full Name</th>
+                                                   <th>From</th>
+                                                   <th>Contact Number</th>
+                                                   <th>Email Address</th>
+                                                   <th>Address</th>
+                                                   <th>Title</th>
+                                                   <th>Purpose</th>
+                                                   <th>Reason of Rejection</th>
+                                                   <th>Action</th>
                                                    
                                                 </tr>
 
                                             </thead>
                                             <tbody>
-                                                @foreach ($transactions as $transaction)
-                                                    <tr class="table-row">
-                                                        <td>{{ $transaction->transaction_code }}</td>                                                        <td>{{ $transaction->fullname }}</td>
-                                                        <td>{{ $transaction->contact_number }}</td>
-                                                        <td>{{ $transaction->email_address }}</td>
-                                                        <td>{{ $transaction->address }}</td>
-                                                        <td>{{ $transaction->title }}</td>
-                                                        <td>{{ $transaction->purpose }}</td>
-                                                        <td>{{ $transaction->u_name }}</td>
-                                                        <td>{{ $transaction->short_description }}</td>
-                                                        <td class="">
-                                                            <a class="btn btn-sm btn-success" href="{{ url('admin/transactionLogs/').'/'.$transaction->id }}">View</a>            
-                                                            <a class="btn btn-sm btn-danger" href="{{ url('/pending/delete/').'/'.$transaction->id }}">Delete</a>
-                                                            {{-- TODO wapa m gana ang delete sa tanang transactions sa admin--}}
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                @endforeach
+                                             @foreach ($transactions as $reject)
+                                                <tr>
+                                                   <td>{{ $reject->transaction_code }}</td>
+                                                   <td>{{ $reject->fullname }}</td>
+                                                   <td>{{ $reject->u_name }}</td>
+                                                   <td>{{ $reject->contact_number }}</td>
+                                                   <td>{{ $reject->email_address }}</td>
+                                                   <td>{{ $reject->address }}</td>
+                                                   <td>{{ $reject->title }}</td>
+                                                   <td>{{ $reject->purpose }}</td>
+                                                   <td>{{ $reject->reason }}</td>
+                                                   <td class="text-center">
+                                                      <a class="btn btn-sm btn-success"
+                                                            href="{{ url('admin/transactionLogs/') . '/' . $reject->t_id }}">View</a>
+                                                   </td>
+                                                </tr>
+                                             @endforeach
                                             </tbody>
                                         </table>
 

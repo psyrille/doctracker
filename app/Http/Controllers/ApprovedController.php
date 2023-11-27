@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Approved;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApprovedController extends Controller
 {
@@ -25,11 +26,32 @@ class ApprovedController extends Controller
 
     public function viewApproved(){
       
-        $approved = Approved::select('*')
-        ->join('transactions', 'transactions.id', '=', 'approved.transaction_id')
-        ->get();
+        $userId = Auth::id();
 
-        return view('Admin.Dashboard.view-approved', compact('approved'));
+        // Kuhaa ang mga transactions nga ang destination kay ang ID sa aktibong user
+        $transactions = Approved::select('t.*','users.name as u_name')
+        ->join('transactions as t','t.id', '=', 'approved.transaction_id')
+        ->join('users', 'users.id', '=', 'approved.to_id')
+        ->where('approved.from_id', Auth::id())->get();
+        ;
+
+
+        // I-display o gamita ang mga transactions
+      
+        return view('Admin.Transaction.approved', compact('transactions'));
        
     }
+
+    public function approvedNotification(){
+
+        Approved::where('notif', 0)->update(array(
+            'notif' => 1
+        ));
+
+        return response() -> json([
+            'status_code' =>1
+        ]);
+    }
+
+    
 }

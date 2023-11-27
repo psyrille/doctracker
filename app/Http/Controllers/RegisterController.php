@@ -34,7 +34,7 @@ class RegisterController extends Controller
             'position' => $request->position,
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'updated_at' => Carbon::now(),
             'department' =>$request->department,
             'type' => 'user'

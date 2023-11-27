@@ -86,14 +86,17 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
     Route::get('/list/delete/{id}', 'ListController@deletelist')->name('list.delete');
 
     Route::get('/transactionLogs/{id}', 'LogController@adminViewLog')->name('view.log');
+    Route::post('/searchTransaction', 'LogController@searchTransaction')->name('admin.search.transaction');
+
+    Route::post('/rejectNotification', 'RejectedController@rejectNotification')->name('admin.rejected.notif');
+
 
     });
 //APPROVED ROUTES
     Route::get('/approved', [ApprovedController::class, 'index'])->name('approved.status');
 
-//VIEW PENDING
-    Route::get('/viewPending', 'PendingController@viewPending')->name('admin.view.pending');
     Route::get('/viewApproved', 'ApprovedController@viewApproved')->name('admin.view.approved');
+    Route::get('/viewRejected', 'RejectedController@viewRejected')->name('admin.view.rejected');
     
 
 #USERS
@@ -129,7 +132,29 @@ Route::group(['middleware' => ['user']], function() {
 
     Route::post('user/searchTransaction', $controller_path . '\User\UserLogController@userSearchTransaction')->name('search.transaction');
     Route::get('/user/transactionLogs/{id}', $controller_path. '\LogController@userViewLog')->name('user.view.log');
+    Route::get('/user/newTransaction', $controller_path. '\User\DashboardController@userViewNewTransaction')->name('user.new.transaction');
+    Route::get('/user/rejectedTransactions', $controller_path. '\User\UserRejectController@rejectedTransactions')->name('user.rejected.transactions');
+    Route::post('/user/userNewTransaction', $controller_path. '\User\DashboardController@userNewTransaction')->name('user.store.transaction');
+    Route::post('/user/rejectTransaction', $controller_path. '\User\UserRejectController@rejectTransaction')->name('user.reject.transaction');
+    Route::post('/user/doneTransaction', $controller_path. '\User\UserPendingController@doneTransaction')->name('user.done.transaction');
+    Route::post('/user/notification', $controller_path. '\User\DashboardController@notification')->name('user.notification');
+
 });  
+
+Route::group(['middleware' => ['admin'],'prefix' => 'admin'], function() {
+    $controller_path = 'App\Http\Controllers';
+    Route::get('viewPending', $controller_path. '\PendingController@viewPending')->name('admin.view.pending');
+    Route::get('viewApproved', $controller_path. '\ApprovedController@viewApproved')->name('admin.view.approved');
+    Route::get('rejectedTransactions', $controller_path. '\RejectedController@rejectedTransactions')->name('admin.rejected.transactions');
+    Route::get('transactionLogs/{id}', $controller_path. '\LogController@adminViewLog')->name('admin.view.log');
+
+
+    Route::post('approveTransaction', $controller_path . '\PendingController@approve')->name('admin.approveTransaction');
+    Route::post('rejectTransaction', $controller_path. '\RejectedController@rejectTransaction')->name('admin.reject.transaction');
+    Route::post('notification', $controller_path. '\Dashboard\DashboardController@notification')->name('admin.notification');
+
+});  
+
 
 
     

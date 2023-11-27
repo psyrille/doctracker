@@ -23,10 +23,12 @@
                     <div class="table-responsive" style="height: 460px;">
                        <table class="table">
                             @foreach ($pendings as $pending)
-                                <th>Transaction Code: {{ $pending->transaction_code }}</th>
-                                <th>Name: {{ $pending->fullname }}</th>
-                                <th>Title: {{ $pending->title }}</th>
-                                <th><a href="{{ url('admin/transactionLogs/').'/'.$pending->id }}"><button class="btn btn-primary">View</button></a></th>
+                                <tr>
+                                 <th>Transaction Code: {{ $pending->transaction_code }}</th>
+                                 <th>Name: {{ $pending->fullname }}</th>
+                                 <th>Title: {{ $pending->title }}</th>
+                                 <th><a href="{{ url('admin/transactionLogs/').'/'.$pending->id }}"><button class="btn btn-primary">View</button></a></th>
+                                </tr>
                             @endforeach
                        </table>
                     </div>

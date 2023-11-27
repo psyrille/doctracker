@@ -27,7 +27,11 @@
                         <div class="ml-1">
                             <span>{{ $transaction->title }}</span><br>
                             <span>{{ $transaction->short_description }}</span><br>
-                            <span>To: {{ $transaction->department }}</span>
+                            @if($transaction->title == "Finalized Transaction")
+                                <span style="display: none">Tosss: {{ $transaction->department }}</span>
+                            @else
+                                <span>Tosss: {{ $transaction->department }}</span>
+                            @endif
                         </div>
                     </div>
                 @endforeach

@@ -8,7 +8,7 @@
         </div>
          <div class="row mb-2">
             <div class="col-sm-6">
-               <h1 class="m-0">Approved Request</h1>
+               <h1 class="m-0">Rejected Request Request</h1>
             </div>
             <div class="col-sm-6">
               <!--  <ol class="breadcrumb float-sm-right">
@@ -22,11 +22,14 @@
                 <div class="row-col-6">
                     <div class="table-responsive" style="height: 460px;">
                        <table class="table">
-                            @foreach ($approved as $approved)
-                                <th>Transaction Code: {{ $approved->transaction_code }}</th>
-                                <th>Name: {{ $approved->fullname }}</th>
-                                <th>Title: {{ $approved->title }}</th>
-                                <th><a href="{{ url('admin/transactionLogs/').'/'.$approved->id }}"><button class="btn btn-primary">View</button></a></th>
+                            @foreach ($rejects as $reject)
+                               <tr>
+                                 <th>Transaction Code: {{ $reject->transaction_code }}</th>
+                                 <th>Name: {{ $reject->fullname }}</th>
+                                 <th>Title: {{ $reject->title }}</th>
+                                 <th>Reason for Rejection: {{ $reject->reason }}</th>
+                                 <th><a href="{{ url('admin/transactionLogs/').'/'.$reject->id }}"><button class="btn btn-primary">View</button></a></th>
+                               </tr>
                             @endforeach
                        </table>
                     </div>

@@ -21,8 +21,12 @@ class UserPendingController extends Controller
 
         $userId = Auth::id();
 
+
         // Kuhaa ang mga transactions nga ang destination kay ang ID sa aktibong user
-        $transactions = Transaction::select('*')->where('destination', $userId)->where('status', 'pending')
+        $transactions = Transaction::select('*','users.department','transactions.id as t_id')
+        ->where('destination', $userId)
+        ->where('status', 'pending')
+        ->join('users', 'users.id', '=', 'transactions.from_id')
         ->get();
 
         $users = User::select('*')->where('id', '!=', 1)->where('id', '!=', Auth::id())->get();
@@ -34,29 +38,82 @@ class UserPendingController extends Controller
          
     }
 
+    public function doneTransaction(Request $request){
+      $id = $request->transaction_id;
+      $from_id = $request->from_id;
+
+
+      try{
+        Transaction::where('id', $id)->update(array(
+          'status' => 'done'
+        ));
+
+        TrackingLog::insert(array(
+          'transaction_id' => $id,
+          'from_id' => $from_id,
+          'title' => 'Finalized Transaction',
+          'short_description' => Str::title(Auth::user()->name). ' finalized the transaction.',
+          'department' => Auth::user()->department,
+          'updated_at' => Carbon::now()
+        ));
+
+        return response()->json([
+          'status_code' => 1
+        ]);
+        
+      }
+      catch(Exception $e){
+        return response()->json([
+          'status_code' => 0
+        ]);
+      }
+    }
+
+    
+
     public function approveTransaction(Request $request){
         $id = $request->id;
+        $receiver = $request->receiver;
 
       
         Transaction::where('id',$id)->update(array(
-          'destination' => $request->to_destination
+          'destination' => $request->to_destination,
+          'from_id' => Auth::id(),
+          'updated_at' => now()
         ));
 
         Approved::insert(array(
           'transaction_id' => $id,  
           'from_id' => Auth::id(),
           'to_id' => $request->to_destination,
+          'notif' => 0,
+          'updated_at' => now()
         ));
 
-        TrackingLog::insert(array(
-          'transaction_id' => $id,
-          'from_id' => Auth::id(),
-          'to_id' => $request->to_destination,
-          'title' => 'Approval',
-          'short_description' => Str::title(Auth::user()->name). ' approved and was sent to '. Str::title($request->to_name),
-          'department' => $request->to_department,
-          'updated_at' => Carbon::now()
-        ));
+        if($receiver == null){
+          TrackingLog::insert(array(
+            'transaction_id' => $id,
+            'from_id' => Auth::id(),
+            'to_id' => $request->to_destination,
+            'title' => 'Approval',
+            'short_description' => Str::title(Auth::user()->name). ' approved and was sent to '. Str::title($request->to_name),
+            'department' => $request->to_department,
+            'updated_at' => Carbon::now()
+          ));
+        }else{
+          TrackingLog::insert(array(
+            'transaction_id' => $id,
+            'from_id' => Auth::id(),
+            'to_id' => $request->to_destination,
+            'title' => 'Approval',
+            'short_description' => Str::title(Auth::user()->name). '('.$receiver.') approved and was sent to '. Str::title($request->to_name),
+            'department' => $request->to_department,
+            'updated_at' => Carbon::now()
+          ));
+        }
+        
+
+        
 
         return response()->json([
           'status_code' => 1
